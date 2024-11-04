@@ -16,6 +16,14 @@ from .news import (
     NewsResourceWithStreamingResponse,
     AsyncNewsResourceWithStreamingResponse,
 )
+from .market import (
+    MarketResource,
+    AsyncMarketResource,
+    MarketResourceWithRawResponse,
+    AsyncMarketResourceWithRawResponse,
+    MarketResourceWithStreamingResponse,
+    AsyncMarketResourceWithStreamingResponse,
+)
 from .stocks import (
     StocksResource,
     AsyncStocksResource,
@@ -23,6 +31,22 @@ from .stocks import (
     AsyncStocksResourceWithRawResponse,
     StocksResourceWithStreamingResponse,
     AsyncStocksResourceWithStreamingResponse,
+)
+from .analyst import (
+    AnalystResource,
+    AsyncAnalystResource,
+    AnalystResourceWithRawResponse,
+    AsyncAnalystResourceWithRawResponse,
+    AnalystResourceWithStreamingResponse,
+    AsyncAnalystResourceWithStreamingResponse,
+)
+from .options import (
+    OptionsResource,
+    AsyncOptionsResource,
+    OptionsResourceWithRawResponse,
+    AsyncOptionsResourceWithRawResponse,
+    OptionsResourceWithStreamingResponse,
+    AsyncOptionsResourceWithStreamingResponse,
 )
 from .congress import (
     CongressResource,
@@ -39,6 +63,14 @@ from .darkpool import (
     AsyncDarkpoolResourceWithRawResponse,
     DarkpoolResourceWithStreamingResponse,
     AsyncDarkpoolResourceWithStreamingResponse,
+)
+from .seasonality import (
+    SeasonalityResource,
+    AsyncSeasonalityResource,
+    SeasonalityResourceWithRawResponse,
+    AsyncSeasonalityResourceWithRawResponse,
+    SeasonalityResourceWithStreamingResponse,
+    AsyncSeasonalityResourceWithStreamingResponse,
 )
 from .institutions import (
     InstitutionsResource,
@@ -100,4 +132,28 @@ __all__ = [
     "AsyncEtfResourceWithRawResponse",
     "EtfResourceWithStreamingResponse",
     "AsyncEtfResourceWithStreamingResponse",
+    "OptionsResource",
+    "AsyncOptionsResource",
+    "OptionsResourceWithRawResponse",
+    "AsyncOptionsResourceWithRawResponse",
+    "OptionsResourceWithStreamingResponse",
+    "AsyncOptionsResourceWithStreamingResponse",
+    "SeasonalityResource",
+    "AsyncSeasonalityResource",
+    "SeasonalityResourceWithRawResponse",
+    "AsyncSeasonalityResourceWithRawResponse",
+    "SeasonalityResourceWithStreamingResponse",
+    "AsyncSeasonalityResourceWithStreamingResponse",
+    "AnalystResource",
+    "AsyncAnalystResource",
+    "AnalystResourceWithRawResponse",
+    "AsyncAnalystResourceWithRawResponse",
+    "AnalystResourceWithStreamingResponse",
+    "AsyncAnalystResourceWithStreamingResponse",
+    "MarketResource",
+    "AsyncMarketResource",
+    "MarketResourceWithRawResponse",
+    "AsyncMarketResourceWithRawResponse",
+    "MarketResourceWithStreamingResponse",
+    "AsyncMarketResourceWithStreamingResponse",
 ]
