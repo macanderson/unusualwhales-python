@@ -2,64 +2,73 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
+
 import httpx
 
-from ..types import news_list_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.news_list_response import NewsListResponse
+from ..._base_client import make_request_options
+from ...types.congress import trade_list_params
+from ...types.congress.trade_list_response import TradeListResponse
 
-__all__ = ["NewsResource", "AsyncNewsResource"]
+__all__ = ["TradesResource", "AsyncTradesResource"]
 
 
-class NewsResource(SyncAPIResource):
+class TradesResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> NewsResourceWithRawResponse:
+    def with_raw_response(self) -> TradesResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#accessing-raw-response-data-eg-headers
         """
-        return NewsResourceWithRawResponse(self)
+        return TradesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> NewsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> TradesResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#with_streaming_response
         """
-        return NewsResourceWithStreamingResponse(self)
+        return TradesResourceWithStreamingResponse(self)
 
     def list(
         self,
         *,
-        symbols: str | NotGiven = NOT_GIVEN,
+        date: Union[str, date] | NotGiven = NOT_GIVEN,
+        member: str | NotGiven = NOT_GIVEN,
+        symbol: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NewsListResponse:
+    ) -> TradeListResponse:
         """
-        Retrieve the latest financial news.
+        Retrieve trading data reported by members of Congress.
 
         Args:
-          symbols: Comma-separated list of stock symbols to filter news.
+          date: Date to filter trades.
+
+          member: Name of the Congress member to filter trades.
+
+          symbol: Stock symbol to filter trades.
 
           extra_headers: Send extra headers
 
@@ -70,54 +79,67 @@ class NewsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/news",
+            "/congress/trades",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"symbols": symbols}, news_list_params.NewsListParams),
+                query=maybe_transform(
+                    {
+                        "date": date,
+                        "member": member,
+                        "symbol": symbol,
+                    },
+                    trade_list_params.TradeListParams,
+                ),
             ),
-            cast_to=NewsListResponse,
+            cast_to=TradeListResponse,
         )
 
 
-class AsyncNewsResource(AsyncAPIResource):
+class AsyncTradesResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncNewsResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncTradesResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncNewsResourceWithRawResponse(self)
+        return AsyncTradesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncNewsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncTradesResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#with_streaming_response
         """
-        return AsyncNewsResourceWithStreamingResponse(self)
+        return AsyncTradesResourceWithStreamingResponse(self)
 
     async def list(
         self,
         *,
-        symbols: str | NotGiven = NOT_GIVEN,
+        date: Union[str, date] | NotGiven = NOT_GIVEN,
+        member: str | NotGiven = NOT_GIVEN,
+        symbol: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NewsListResponse:
+    ) -> TradeListResponse:
         """
-        Retrieve the latest financial news.
+        Retrieve trading data reported by members of Congress.
 
         Args:
-          symbols: Comma-separated list of stock symbols to filter news.
+          date: Date to filter trades.
+
+          member: Name of the Congress member to filter trades.
+
+          symbol: Stock symbol to filter trades.
 
           extra_headers: Send extra headers
 
@@ -128,49 +150,56 @@ class AsyncNewsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/news",
+            "/congress/trades",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"symbols": symbols}, news_list_params.NewsListParams),
+                query=await async_maybe_transform(
+                    {
+                        "date": date,
+                        "member": member,
+                        "symbol": symbol,
+                    },
+                    trade_list_params.TradeListParams,
+                ),
             ),
-            cast_to=NewsListResponse,
+            cast_to=TradeListResponse,
         )
 
 
-class NewsResourceWithRawResponse:
-    def __init__(self, news: NewsResource) -> None:
-        self._news = news
+class TradesResourceWithRawResponse:
+    def __init__(self, trades: TradesResource) -> None:
+        self._trades = trades
 
         self.list = to_raw_response_wrapper(
-            news.list,
+            trades.list,
         )
 
 
-class AsyncNewsResourceWithRawResponse:
-    def __init__(self, news: AsyncNewsResource) -> None:
-        self._news = news
+class AsyncTradesResourceWithRawResponse:
+    def __init__(self, trades: AsyncTradesResource) -> None:
+        self._trades = trades
 
         self.list = async_to_raw_response_wrapper(
-            news.list,
+            trades.list,
         )
 
 
-class NewsResourceWithStreamingResponse:
-    def __init__(self, news: NewsResource) -> None:
-        self._news = news
+class TradesResourceWithStreamingResponse:
+    def __init__(self, trades: TradesResource) -> None:
+        self._trades = trades
 
         self.list = to_streamed_response_wrapper(
-            news.list,
+            trades.list,
         )
 
 
-class AsyncNewsResourceWithStreamingResponse:
-    def __init__(self, news: AsyncNewsResource) -> None:
-        self._news = news
+class AsyncTradesResourceWithStreamingResponse:
+    def __init__(self, trades: AsyncTradesResource) -> None:
+        self._trades = trades
 
         self.list = async_to_streamed_response_wrapper(
-            news.list,
+            trades.list,
         )

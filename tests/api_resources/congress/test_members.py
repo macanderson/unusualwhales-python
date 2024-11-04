@@ -9,78 +9,64 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
-from unusualwhales.types import NewsListResponse
+from unusualwhales.types.congress import MemberListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
-class TestNews:
+class TestMembers:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_list(self, client: Unusualwhales) -> None:
-        news = client.news.list()
-        assert_matches_type(NewsListResponse, news, path=["response"])
-
-    @parametrize
-    def test_method_list_with_all_params(self, client: Unusualwhales) -> None:
-        news = client.news.list(
-            symbols="symbols",
-        )
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        member = client.congress.members.list()
+        assert_matches_type(MemberListResponse, member, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unusualwhales) -> None:
-        response = client.news.with_raw_response.list()
+        response = client.congress.members.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        news = response.parse()
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        member = response.parse()
+        assert_matches_type(MemberListResponse, member, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unusualwhales) -> None:
-        with client.news.with_streaming_response.list() as response:
+        with client.congress.members.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            news = response.parse()
-            assert_matches_type(NewsListResponse, news, path=["response"])
+            member = response.parse()
+            assert_matches_type(MemberListResponse, member, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
-class TestAsyncNews:
+class TestAsyncMembers:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnusualwhales) -> None:
-        news = await async_client.news.list()
-        assert_matches_type(NewsListResponse, news, path=["response"])
-
-    @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncUnusualwhales) -> None:
-        news = await async_client.news.list(
-            symbols="symbols",
-        )
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        member = await async_client.congress.members.list()
+        assert_matches_type(MemberListResponse, member, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnusualwhales) -> None:
-        response = await async_client.news.with_raw_response.list()
+        response = await async_client.congress.members.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        news = await response.parse()
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        member = await response.parse()
+        assert_matches_type(MemberListResponse, member, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnusualwhales) -> None:
-        async with async_client.news.with_streaming_response.list() as response:
+        async with async_client.congress.members.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            news = await response.parse()
-            assert_matches_type(NewsListResponse, news, path=["response"])
+            member = await response.parse()
+            assert_matches_type(MemberListResponse, member, path=["response"])
 
         assert cast(Any, response.is_closed) is True
