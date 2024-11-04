@@ -49,6 +49,10 @@ class Unusualwhales(SyncAPIClient):
     options_flows: resources.OptionsFlowsResource
     stocks: resources.StocksResource
     news: resources.NewsResource
+    congress: resources.CongressResource
+    institutions: resources.InstitutionsResource
+    darkpool: resources.DarkpoolResource
+    etf: resources.EtfResource
     with_raw_response: UnusualwhalesWithRawResponse
     with_streaming_response: UnusualwhalesWithStreamedResponse
 
@@ -109,6 +113,10 @@ class Unusualwhales(SyncAPIClient):
         self.options_flows = resources.OptionsFlowsResource(self)
         self.stocks = resources.StocksResource(self)
         self.news = resources.NewsResource(self)
+        self.congress = resources.CongressResource(self)
+        self.institutions = resources.InstitutionsResource(self)
+        self.darkpool = resources.DarkpoolResource(self)
+        self.etf = resources.EtfResource(self)
         self.with_raw_response = UnusualwhalesWithRawResponse(self)
         self.with_streaming_response = UnusualwhalesWithStreamedResponse(self)
 
@@ -221,6 +229,10 @@ class AsyncUnusualwhales(AsyncAPIClient):
     options_flows: resources.AsyncOptionsFlowsResource
     stocks: resources.AsyncStocksResource
     news: resources.AsyncNewsResource
+    congress: resources.AsyncCongressResource
+    institutions: resources.AsyncInstitutionsResource
+    darkpool: resources.AsyncDarkpoolResource
+    etf: resources.AsyncEtfResource
     with_raw_response: AsyncUnusualwhalesWithRawResponse
     with_streaming_response: AsyncUnusualwhalesWithStreamedResponse
 
@@ -281,6 +293,10 @@ class AsyncUnusualwhales(AsyncAPIClient):
         self.options_flows = resources.AsyncOptionsFlowsResource(self)
         self.stocks = resources.AsyncStocksResource(self)
         self.news = resources.AsyncNewsResource(self)
+        self.congress = resources.AsyncCongressResource(self)
+        self.institutions = resources.AsyncInstitutionsResource(self)
+        self.darkpool = resources.AsyncDarkpoolResource(self)
+        self.etf = resources.AsyncEtfResource(self)
         self.with_raw_response = AsyncUnusualwhalesWithRawResponse(self)
         self.with_streaming_response = AsyncUnusualwhalesWithStreamedResponse(self)
 
@@ -394,6 +410,10 @@ class UnusualwhalesWithRawResponse:
         self.options_flows = resources.OptionsFlowsResourceWithRawResponse(client.options_flows)
         self.stocks = resources.StocksResourceWithRawResponse(client.stocks)
         self.news = resources.NewsResourceWithRawResponse(client.news)
+        self.congress = resources.CongressResourceWithRawResponse(client.congress)
+        self.institutions = resources.InstitutionsResourceWithRawResponse(client.institutions)
+        self.darkpool = resources.DarkpoolResourceWithRawResponse(client.darkpool)
+        self.etf = resources.EtfResourceWithRawResponse(client.etf)
 
 
 class AsyncUnusualwhalesWithRawResponse:
@@ -401,6 +421,10 @@ class AsyncUnusualwhalesWithRawResponse:
         self.options_flows = resources.AsyncOptionsFlowsResourceWithRawResponse(client.options_flows)
         self.stocks = resources.AsyncStocksResourceWithRawResponse(client.stocks)
         self.news = resources.AsyncNewsResourceWithRawResponse(client.news)
+        self.congress = resources.AsyncCongressResourceWithRawResponse(client.congress)
+        self.institutions = resources.AsyncInstitutionsResourceWithRawResponse(client.institutions)
+        self.darkpool = resources.AsyncDarkpoolResourceWithRawResponse(client.darkpool)
+        self.etf = resources.AsyncEtfResourceWithRawResponse(client.etf)
 
 
 class UnusualwhalesWithStreamedResponse:
@@ -408,6 +432,10 @@ class UnusualwhalesWithStreamedResponse:
         self.options_flows = resources.OptionsFlowsResourceWithStreamingResponse(client.options_flows)
         self.stocks = resources.StocksResourceWithStreamingResponse(client.stocks)
         self.news = resources.NewsResourceWithStreamingResponse(client.news)
+        self.congress = resources.CongressResourceWithStreamingResponse(client.congress)
+        self.institutions = resources.InstitutionsResourceWithStreamingResponse(client.institutions)
+        self.darkpool = resources.DarkpoolResourceWithStreamingResponse(client.darkpool)
+        self.etf = resources.EtfResourceWithStreamingResponse(client.etf)
 
 
 class AsyncUnusualwhalesWithStreamedResponse:
@@ -415,6 +443,10 @@ class AsyncUnusualwhalesWithStreamedResponse:
         self.options_flows = resources.AsyncOptionsFlowsResourceWithStreamingResponse(client.options_flows)
         self.stocks = resources.AsyncStocksResourceWithStreamingResponse(client.stocks)
         self.news = resources.AsyncNewsResourceWithStreamingResponse(client.news)
+        self.congress = resources.AsyncCongressResourceWithStreamingResponse(client.congress)
+        self.institutions = resources.AsyncInstitutionsResourceWithStreamingResponse(client.institutions)
+        self.darkpool = resources.AsyncDarkpoolResourceWithStreamingResponse(client.darkpool)
+        self.etf = resources.AsyncEtfResourceWithStreamingResponse(client.etf)
 
 
 Client = Unusualwhales

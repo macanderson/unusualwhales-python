@@ -4,22 +4,34 @@ from __future__ import annotations
 
 import httpx
 
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .screener import (
+    ScreenerResource,
+    AsyncScreenerResource,
+    ScreenerResourceWithRawResponse,
+    AsyncScreenerResourceWithRawResponse,
+    ScreenerResourceWithStreamingResponse,
+    AsyncScreenerResourceWithStreamingResponse,
+)
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.stock_retrieve_response import StockRetrieveResponse
+from ..._base_client import make_request_options
+from ...types.stock_retrieve_response import StockRetrieveResponse
 
 __all__ = ["StocksResource", "AsyncStocksResource"]
 
 
 class StocksResource(SyncAPIResource):
+    @cached_property
+    def screener(self) -> ScreenerResource:
+        return ScreenerResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> StocksResourceWithRawResponse:
         """
@@ -74,6 +86,10 @@ class StocksResource(SyncAPIResource):
 
 
 class AsyncStocksResource(AsyncAPIResource):
+    @cached_property
+    def screener(self) -> AsyncScreenerResource:
+        return AsyncScreenerResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncStocksResourceWithRawResponse:
         """
@@ -135,6 +151,10 @@ class StocksResourceWithRawResponse:
             stocks.retrieve,
         )
 
+    @cached_property
+    def screener(self) -> ScreenerResourceWithRawResponse:
+        return ScreenerResourceWithRawResponse(self._stocks.screener)
+
 
 class AsyncStocksResourceWithRawResponse:
     def __init__(self, stocks: AsyncStocksResource) -> None:
@@ -143,6 +163,10 @@ class AsyncStocksResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             stocks.retrieve,
         )
+
+    @cached_property
+    def screener(self) -> AsyncScreenerResourceWithRawResponse:
+        return AsyncScreenerResourceWithRawResponse(self._stocks.screener)
 
 
 class StocksResourceWithStreamingResponse:
@@ -153,6 +177,10 @@ class StocksResourceWithStreamingResponse:
             stocks.retrieve,
         )
 
+    @cached_property
+    def screener(self) -> ScreenerResourceWithStreamingResponse:
+        return ScreenerResourceWithStreamingResponse(self._stocks.screener)
+
 
 class AsyncStocksResourceWithStreamingResponse:
     def __init__(self, stocks: AsyncStocksResource) -> None:
@@ -161,3 +189,7 @@ class AsyncStocksResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             stocks.retrieve,
         )
+
+    @cached_property
+    def screener(self) -> AsyncScreenerResourceWithStreamingResponse:
+        return AsyncScreenerResourceWithStreamingResponse(self._stocks.screener)
