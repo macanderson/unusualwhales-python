@@ -16,14 +16,6 @@ from .stocks import (
     StocksResourceWithStreamingResponse,
     AsyncStocksResourceWithStreamingResponse,
 )
-from .options import (
-    OptionsResource,
-    AsyncOptionsResource,
-    OptionsResourceWithRawResponse,
-    AsyncOptionsResourceWithRawResponse,
-    OptionsResourceWithStreamingResponse,
-    AsyncOptionsResourceWithStreamingResponse,
-)
 from .congress import (
     CongressResource,
     AsyncCongressResource,
@@ -47,6 +39,14 @@ from .institutions import (
     AsyncInstitutionsResourceWithRawResponse,
     InstitutionsResourceWithStreamingResponse,
     AsyncInstitutionsResourceWithStreamingResponse,
+)
+from .options_flows import (
+    OptionsFlowsResource,
+    AsyncOptionsFlowsResource,
+    OptionsFlowsResourceWithRawResponse,
+    AsyncOptionsFlowsResourceWithRawResponse,
+    OptionsFlowsResourceWithStreamingResponse,
+    AsyncOptionsFlowsResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -80,10 +80,10 @@ __all__ = [
     "AsyncEtfResourceWithRawResponse",
     "EtfResourceWithStreamingResponse",
     "AsyncEtfResourceWithStreamingResponse",
-    "OptionsResource",
-    "AsyncOptionsResource",
-    "OptionsResourceWithRawResponse",
-    "AsyncOptionsResourceWithRawResponse",
-    "OptionsResourceWithStreamingResponse",
-    "AsyncOptionsResourceWithStreamingResponse",
+    "OptionsFlowsResource",
+    "AsyncOptionsFlowsResource",
+    "OptionsFlowsResourceWithRawResponse",
+    "AsyncOptionsFlowsResourceWithRawResponse",
+    "OptionsFlowsResourceWithStreamingResponse",
+    "AsyncOptionsFlowsResourceWithStreamingResponse",
 ]
