@@ -765,7 +765,7 @@ class TestUnusualwhales:
 
         respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = client.options_flows.with_raw_response.retrieve(symbol="symbol")
+        response = client.options.options_flows.with_raw_response.retrieve(symbol="symbol")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -789,7 +789,7 @@ class TestUnusualwhales:
 
         respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = client.options_flows.with_raw_response.retrieve(
+        response = client.options.options_flows.with_raw_response.retrieve(
             symbol="symbol", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -814,7 +814,7 @@ class TestUnusualwhales:
 
         respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = client.options_flows.with_raw_response.retrieve(
+        response = client.options.options_flows.with_raw_response.retrieve(
             symbol="symbol", extra_headers={"x-stainless-retry-count": "42"}
         )
 
@@ -1540,7 +1540,7 @@ class TestAsyncUnusualwhales:
 
         respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = await client.options_flows.with_raw_response.retrieve(symbol="symbol")
+        response = await client.options.options_flows.with_raw_response.retrieve(symbol="symbol")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1565,7 +1565,7 @@ class TestAsyncUnusualwhales:
 
         respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = await client.options_flows.with_raw_response.retrieve(
+        response = await client.options.options_flows.with_raw_response.retrieve(
             symbol="symbol", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
@@ -1591,7 +1591,7 @@ class TestAsyncUnusualwhales:
 
         respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = await client.options_flows.with_raw_response.retrieve(
+        response = await client.options.options_flows.with_raw_response.retrieve(
             symbol="symbol", extra_headers={"x-stainless-retry-count": "42"}
         )
 

@@ -8,14 +8,6 @@ from .etf import (
     EtfResourceWithStreamingResponse,
     AsyncEtfResourceWithStreamingResponse,
 )
-from .news import (
-    NewsResource,
-    AsyncNewsResource,
-    NewsResourceWithRawResponse,
-    AsyncNewsResourceWithRawResponse,
-    NewsResourceWithStreamingResponse,
-    AsyncNewsResourceWithStreamingResponse,
-)
 from .stocks import (
     StocksResource,
     AsyncStocksResource,
@@ -23,6 +15,14 @@ from .stocks import (
     AsyncStocksResourceWithRawResponse,
     StocksResourceWithStreamingResponse,
     AsyncStocksResourceWithStreamingResponse,
+)
+from .options import (
+    OptionsResource,
+    AsyncOptionsResource,
+    OptionsResourceWithRawResponse,
+    AsyncOptionsResourceWithRawResponse,
+    OptionsResourceWithStreamingResponse,
+    AsyncOptionsResourceWithStreamingResponse,
 )
 from .congress import (
     CongressResource,
@@ -48,34 +48,14 @@ from .institutions import (
     InstitutionsResourceWithStreamingResponse,
     AsyncInstitutionsResourceWithStreamingResponse,
 )
-from .options_flows import (
-    OptionsFlowsResource,
-    AsyncOptionsFlowsResource,
-    OptionsFlowsResourceWithRawResponse,
-    AsyncOptionsFlowsResourceWithRawResponse,
-    OptionsFlowsResourceWithStreamingResponse,
-    AsyncOptionsFlowsResourceWithStreamingResponse,
-)
 
 __all__ = [
-    "OptionsFlowsResource",
-    "AsyncOptionsFlowsResource",
-    "OptionsFlowsResourceWithRawResponse",
-    "AsyncOptionsFlowsResourceWithRawResponse",
-    "OptionsFlowsResourceWithStreamingResponse",
-    "AsyncOptionsFlowsResourceWithStreamingResponse",
     "StocksResource",
     "AsyncStocksResource",
     "StocksResourceWithRawResponse",
     "AsyncStocksResourceWithRawResponse",
     "StocksResourceWithStreamingResponse",
     "AsyncStocksResourceWithStreamingResponse",
-    "NewsResource",
-    "AsyncNewsResource",
-    "NewsResourceWithRawResponse",
-    "AsyncNewsResourceWithRawResponse",
-    "NewsResourceWithStreamingResponse",
-    "AsyncNewsResourceWithStreamingResponse",
     "CongressResource",
     "AsyncCongressResource",
     "CongressResourceWithRawResponse",
@@ -100,4 +80,10 @@ __all__ = [
     "AsyncEtfResourceWithRawResponse",
     "EtfResourceWithStreamingResponse",
     "AsyncEtfResourceWithStreamingResponse",
+    "OptionsResource",
+    "AsyncOptionsResource",
+    "OptionsResourceWithRawResponse",
+    "AsyncOptionsResourceWithRawResponse",
+    "OptionsResourceWithStreamingResponse",
+    "AsyncOptionsResourceWithStreamingResponse",
 ]

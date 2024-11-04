@@ -1,16 +1,3 @@
-# OptionsFlows
-
-Types:
-
-```python
-from unusualwhales.types import OptionsFlowRetrieveResponse, OptionsFlowListResponse
-```
-
-Methods:
-
-- <code title="get /options/flow/{symbol}">client.options_flows.<a href="./src/unusualwhales/resources/options_flows.py">retrieve</a>(symbol, \*\*<a href="src/unusualwhales/types/options_flow_retrieve_params.py">params</a>) -> <a href="./src/unusualwhales/types/options_flow_retrieve_response.py">OptionsFlowRetrieveResponse</a></code>
-- <code title="get /options/flow">client.options_flows.<a href="./src/unusualwhales/resources/options_flows.py">list</a>(\*\*<a href="src/unusualwhales/types/options_flow_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/options_flow_list_response.py">OptionsFlowListResponse</a></code>
-
 # Stocks
 
 Types:
@@ -36,17 +23,17 @@ Methods:
 - <code title="get /stocks/screener">client.stocks.screener.<a href="./src/unusualwhales/resources/stocks/screener.py">get</a>(\*\*<a href="src/unusualwhales/types/stocks/screener_get_params.py">params</a>) -> <a href="./src/unusualwhales/types/stocks/screener_get_response.py">ScreenerGetResponse</a></code>
 - <code title="post /stocks/screener">client.stocks.screener.<a href="./src/unusualwhales/resources/stocks/screener.py">post</a>(\*\*<a href="src/unusualwhales/types/stocks/screener_post_params.py">params</a>) -> <a href="./src/unusualwhales/types/stocks/screener_post_response.py">ScreenerPostResponse</a></code>
 
-# News
+## News
 
 Types:
 
 ```python
-from unusualwhales.types import NewsListResponse
+from unusualwhales.types.stocks import NewsListResponse
 ```
 
 Methods:
 
-- <code title="get /news">client.news.<a href="./src/unusualwhales/resources/news.py">list</a>(\*\*<a href="src/unusualwhales/types/news_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/news_list_response.py">NewsListResponse</a></code>
+- <code title="get /news">client.stocks.news.<a href="./src/unusualwhales/resources/stocks/news.py">list</a>(\*\*<a href="src/unusualwhales/types/stocks/news_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/stocks/news_list_response.py">NewsListResponse</a></code>
 
 # Congress
 
@@ -136,3 +123,18 @@ from unusualwhales.types.etf import HoldingListResponse
 Methods:
 
 - <code title="get /etf/holdings">client.etf.holdings.<a href="./src/unusualwhales/resources/etf/holdings.py">list</a>(\*\*<a href="src/unusualwhales/types/etf/holding_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/etf/holding_list_response.py">HoldingListResponse</a></code>
+
+# Options
+
+## OptionsFlows
+
+Types:
+
+```python
+from unusualwhales.types.options import OptionsFlowRetrieveResponse, OptionsFlowListResponse
+```
+
+Methods:
+
+- <code title="get /options/flow/{symbol}">client.options.options_flows.<a href="./src/unusualwhales/resources/options/options_flows.py">retrieve</a>(symbol, \*\*<a href="src/unusualwhales/types/options/options_flow_retrieve_params.py">params</a>) -> <a href="./src/unusualwhales/types/options/options_flow_retrieve_response.py">OptionsFlowRetrieveResponse</a></code>
+- <code title="get /options/flow">client.options.options_flows.<a href="./src/unusualwhales/resources/options/options_flows.py">list</a>(\*\*<a href="src/unusualwhales/types/options/options_flow_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/options/options_flow_list_response.py">OptionsFlowListResponse</a></code>
