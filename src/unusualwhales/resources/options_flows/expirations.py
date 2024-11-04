@@ -4,23 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from .news import (
-    NewsResource,
-    AsyncNewsResource,
-    NewsResourceWithRawResponse,
-    AsyncNewsResourceWithRawResponse,
-    NewsResourceWithStreamingResponse,
-    AsyncNewsResourceWithStreamingResponse,
-)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .screener import (
-    ScreenerResource,
-    AsyncScreenerResource,
-    ScreenerResourceWithRawResponse,
-    AsyncScreenerResourceWithRawResponse,
-    ScreenerResourceWithStreamingResponse,
-    AsyncScreenerResourceWithStreamingResponse,
-)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -30,38 +14,30 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.stock_retrieve_response import StockRetrieveResponse
+from ...types.options_flows.expiration_retrieve_response import ExpirationRetrieveResponse
 
-__all__ = ["StocksResource", "AsyncStocksResource"]
+__all__ = ["ExpirationsResource", "AsyncExpirationsResource"]
 
 
-class StocksResource(SyncAPIResource):
+class ExpirationsResource(SyncAPIResource):
     @cached_property
-    def screener(self) -> ScreenerResource:
-        return ScreenerResource(self._client)
-
-    @cached_property
-    def news(self) -> NewsResource:
-        return NewsResource(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> StocksResourceWithRawResponse:
+    def with_raw_response(self) -> ExpirationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#accessing-raw-response-data-eg-headers
         """
-        return StocksResourceWithRawResponse(self)
+        return ExpirationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> StocksResourceWithStreamingResponse:
+    def with_streaming_response(self) -> ExpirationsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#with_streaming_response
         """
-        return StocksResourceWithStreamingResponse(self)
+        return ExpirationsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -73,9 +49,9 @@ class StocksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StockRetrieveResponse:
+    ) -> ExpirationRetrieveResponse:
         """
-        Retrieve the current price for a stock symbol.
+        Retrieve available option expiration dates for a specific stock symbol.
 
         Args:
           extra_headers: Send extra headers
@@ -89,41 +65,33 @@ class StocksResource(SyncAPIResource):
         if not symbol:
             raise ValueError(f"Expected a non-empty value for `symbol` but received {symbol!r}")
         return self._get(
-            f"/stocks/price/{symbol}",
+            f"/options/expirations/{symbol}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=StockRetrieveResponse,
+            cast_to=ExpirationRetrieveResponse,
         )
 
 
-class AsyncStocksResource(AsyncAPIResource):
+class AsyncExpirationsResource(AsyncAPIResource):
     @cached_property
-    def screener(self) -> AsyncScreenerResource:
-        return AsyncScreenerResource(self._client)
-
-    @cached_property
-    def news(self) -> AsyncNewsResource:
-        return AsyncNewsResource(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> AsyncStocksResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncExpirationsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return the
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncStocksResourceWithRawResponse(self)
+        return AsyncExpirationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncStocksResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncExpirationsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/macanderson/unusualwhales-python#with_streaming_response
         """
-        return AsyncStocksResourceWithStreamingResponse(self)
+        return AsyncExpirationsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -135,9 +103,9 @@ class AsyncStocksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StockRetrieveResponse:
+    ) -> ExpirationRetrieveResponse:
         """
-        Retrieve the current price for a stock symbol.
+        Retrieve available option expiration dates for a specific stock symbol.
 
         Args:
           extra_headers: Send extra headers
@@ -151,77 +119,45 @@ class AsyncStocksResource(AsyncAPIResource):
         if not symbol:
             raise ValueError(f"Expected a non-empty value for `symbol` but received {symbol!r}")
         return await self._get(
-            f"/stocks/price/{symbol}",
+            f"/options/expirations/{symbol}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=StockRetrieveResponse,
+            cast_to=ExpirationRetrieveResponse,
         )
 
 
-class StocksResourceWithRawResponse:
-    def __init__(self, stocks: StocksResource) -> None:
-        self._stocks = stocks
+class ExpirationsResourceWithRawResponse:
+    def __init__(self, expirations: ExpirationsResource) -> None:
+        self._expirations = expirations
 
         self.retrieve = to_raw_response_wrapper(
-            stocks.retrieve,
+            expirations.retrieve,
         )
 
-    @cached_property
-    def screener(self) -> ScreenerResourceWithRawResponse:
-        return ScreenerResourceWithRawResponse(self._stocks.screener)
 
-    @cached_property
-    def news(self) -> NewsResourceWithRawResponse:
-        return NewsResourceWithRawResponse(self._stocks.news)
-
-
-class AsyncStocksResourceWithRawResponse:
-    def __init__(self, stocks: AsyncStocksResource) -> None:
-        self._stocks = stocks
+class AsyncExpirationsResourceWithRawResponse:
+    def __init__(self, expirations: AsyncExpirationsResource) -> None:
+        self._expirations = expirations
 
         self.retrieve = async_to_raw_response_wrapper(
-            stocks.retrieve,
+            expirations.retrieve,
         )
 
-    @cached_property
-    def screener(self) -> AsyncScreenerResourceWithRawResponse:
-        return AsyncScreenerResourceWithRawResponse(self._stocks.screener)
 
-    @cached_property
-    def news(self) -> AsyncNewsResourceWithRawResponse:
-        return AsyncNewsResourceWithRawResponse(self._stocks.news)
-
-
-class StocksResourceWithStreamingResponse:
-    def __init__(self, stocks: StocksResource) -> None:
-        self._stocks = stocks
+class ExpirationsResourceWithStreamingResponse:
+    def __init__(self, expirations: ExpirationsResource) -> None:
+        self._expirations = expirations
 
         self.retrieve = to_streamed_response_wrapper(
-            stocks.retrieve,
+            expirations.retrieve,
         )
 
-    @cached_property
-    def screener(self) -> ScreenerResourceWithStreamingResponse:
-        return ScreenerResourceWithStreamingResponse(self._stocks.screener)
 
-    @cached_property
-    def news(self) -> NewsResourceWithStreamingResponse:
-        return NewsResourceWithStreamingResponse(self._stocks.news)
-
-
-class AsyncStocksResourceWithStreamingResponse:
-    def __init__(self, stocks: AsyncStocksResource) -> None:
-        self._stocks = stocks
+class AsyncExpirationsResourceWithStreamingResponse:
+    def __init__(self, expirations: AsyncExpirationsResource) -> None:
+        self._expirations = expirations
 
         self.retrieve = async_to_streamed_response_wrapper(
-            stocks.retrieve,
+            expirations.retrieve,
         )
-
-    @cached_property
-    def screener(self) -> AsyncScreenerResourceWithStreamingResponse:
-        return AsyncScreenerResourceWithStreamingResponse(self._stocks.screener)
-
-    @cached_property
-    def news(self) -> AsyncNewsResourceWithStreamingResponse:
-        return AsyncNewsResourceWithStreamingResponse(self._stocks.news)
