@@ -8,6 +8,22 @@ from .etf import (
     EtfResourceWithStreamingResponse,
     AsyncEtfResourceWithStreamingResponse,
 )
+from .news import (
+    NewsResource,
+    AsyncNewsResource,
+    NewsResourceWithRawResponse,
+    AsyncNewsResourceWithRawResponse,
+    NewsResourceWithStreamingResponse,
+    AsyncNewsResourceWithStreamingResponse,
+)
+from .market import (
+    MarketResource,
+    AsyncMarketResource,
+    MarketResourceWithRawResponse,
+    AsyncMarketResourceWithRawResponse,
+    MarketResourceWithStreamingResponse,
+    AsyncMarketResourceWithStreamingResponse,
+)
 from .stocks import (
     StocksResource,
     AsyncStocksResource,
@@ -15,6 +31,14 @@ from .stocks import (
     AsyncStocksResourceWithRawResponse,
     StocksResourceWithStreamingResponse,
     AsyncStocksResourceWithStreamingResponse,
+)
+from .analyst import (
+    AnalystResource,
+    AsyncAnalystResource,
+    AnalystResourceWithRawResponse,
+    AsyncAnalystResourceWithRawResponse,
+    AnalystResourceWithStreamingResponse,
+    AsyncAnalystResourceWithStreamingResponse,
 )
 from .options import (
     OptionsResource,
@@ -40,6 +64,14 @@ from .darkpool import (
     DarkpoolResourceWithStreamingResponse,
     AsyncDarkpoolResourceWithStreamingResponse,
 )
+from .seasonality import (
+    SeasonalityResource,
+    AsyncSeasonalityResource,
+    SeasonalityResourceWithRawResponse,
+    AsyncSeasonalityResourceWithRawResponse,
+    SeasonalityResourceWithStreamingResponse,
+    AsyncSeasonalityResourceWithStreamingResponse,
+)
 from .institutions import (
     InstitutionsResource,
     AsyncInstitutionsResource,
@@ -48,14 +80,34 @@ from .institutions import (
     InstitutionsResourceWithStreamingResponse,
     AsyncInstitutionsResourceWithStreamingResponse,
 )
+from .options_flows import (
+    OptionsFlowsResource,
+    AsyncOptionsFlowsResource,
+    OptionsFlowsResourceWithRawResponse,
+    AsyncOptionsFlowsResourceWithRawResponse,
+    OptionsFlowsResourceWithStreamingResponse,
+    AsyncOptionsFlowsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "OptionsFlowsResource",
+    "AsyncOptionsFlowsResource",
+    "OptionsFlowsResourceWithRawResponse",
+    "AsyncOptionsFlowsResourceWithRawResponse",
+    "OptionsFlowsResourceWithStreamingResponse",
+    "AsyncOptionsFlowsResourceWithStreamingResponse",
     "StocksResource",
     "AsyncStocksResource",
     "StocksResourceWithRawResponse",
     "AsyncStocksResourceWithRawResponse",
     "StocksResourceWithStreamingResponse",
     "AsyncStocksResourceWithStreamingResponse",
+    "NewsResource",
+    "AsyncNewsResource",
+    "NewsResourceWithRawResponse",
+    "AsyncNewsResourceWithRawResponse",
+    "NewsResourceWithStreamingResponse",
+    "AsyncNewsResourceWithStreamingResponse",
     "CongressResource",
     "AsyncCongressResource",
     "CongressResourceWithRawResponse",
@@ -86,4 +138,22 @@ __all__ = [
     "AsyncOptionsResourceWithRawResponse",
     "OptionsResourceWithStreamingResponse",
     "AsyncOptionsResourceWithStreamingResponse",
+    "SeasonalityResource",
+    "AsyncSeasonalityResource",
+    "SeasonalityResourceWithRawResponse",
+    "AsyncSeasonalityResourceWithRawResponse",
+    "SeasonalityResourceWithStreamingResponse",
+    "AsyncSeasonalityResourceWithStreamingResponse",
+    "AnalystResource",
+    "AsyncAnalystResource",
+    "AnalystResourceWithRawResponse",
+    "AsyncAnalystResourceWithRawResponse",
+    "AnalystResourceWithStreamingResponse",
+    "AsyncAnalystResourceWithStreamingResponse",
+    "MarketResource",
+    "AsyncMarketResource",
+    "MarketResourceWithRawResponse",
+    "AsyncMarketResourceWithRawResponse",
+    "MarketResourceWithStreamingResponse",
+    "AsyncMarketResourceWithStreamingResponse",
 ]

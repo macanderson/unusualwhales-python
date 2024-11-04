@@ -7,7 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["NewsListResponse", "Article"]
+__all__ = ["NewsRetrieveResponse", "Article"]
 
 
 class Article(BaseModel):
@@ -20,5 +20,5 @@ class Article(BaseModel):
     url: Optional[str] = None
 
 
-class NewsListResponse(BaseModel):
+class NewsRetrieveResponse(BaseModel):
     articles: Optional[List[Article]] = None

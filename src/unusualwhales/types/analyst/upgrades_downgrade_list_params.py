@@ -8,12 +8,9 @@ from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["OptionsFlowListParams"]
+__all__ = ["UpgradesDowngradeListParams"]
 
 
-class OptionsFlowListParams(TypedDict, total=False):
+class UpgradesDowngradeListParams(TypedDict, total=False):
     date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
-    """Date to filter the options flow data."""
-
-    symbol: str
-    """Stock symbol to filter the options flow data."""
+    """Date to filter upgrades and downgrades."""

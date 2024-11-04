@@ -4,14 +4,6 @@ from __future__ import annotations
 
 import httpx
 
-from .news import (
-    NewsResource,
-    AsyncNewsResource,
-    NewsResourceWithRawResponse,
-    AsyncNewsResourceWithRawResponse,
-    NewsResourceWithStreamingResponse,
-    AsyncNewsResourceWithStreamingResponse,
-)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .screener import (
     ScreenerResource,
@@ -39,10 +31,6 @@ class StocksResource(SyncAPIResource):
     @cached_property
     def screener(self) -> ScreenerResource:
         return ScreenerResource(self._client)
-
-    @cached_property
-    def news(self) -> NewsResource:
-        return NewsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> StocksResourceWithRawResponse:
@@ -101,10 +89,6 @@ class AsyncStocksResource(AsyncAPIResource):
     @cached_property
     def screener(self) -> AsyncScreenerResource:
         return AsyncScreenerResource(self._client)
-
-    @cached_property
-    def news(self) -> AsyncNewsResource:
-        return AsyncNewsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncStocksResourceWithRawResponse:
@@ -171,10 +155,6 @@ class StocksResourceWithRawResponse:
     def screener(self) -> ScreenerResourceWithRawResponse:
         return ScreenerResourceWithRawResponse(self._stocks.screener)
 
-    @cached_property
-    def news(self) -> NewsResourceWithRawResponse:
-        return NewsResourceWithRawResponse(self._stocks.news)
-
 
 class AsyncStocksResourceWithRawResponse:
     def __init__(self, stocks: AsyncStocksResource) -> None:
@@ -187,10 +167,6 @@ class AsyncStocksResourceWithRawResponse:
     @cached_property
     def screener(self) -> AsyncScreenerResourceWithRawResponse:
         return AsyncScreenerResourceWithRawResponse(self._stocks.screener)
-
-    @cached_property
-    def news(self) -> AsyncNewsResourceWithRawResponse:
-        return AsyncNewsResourceWithRawResponse(self._stocks.news)
 
 
 class StocksResourceWithStreamingResponse:
@@ -205,10 +181,6 @@ class StocksResourceWithStreamingResponse:
     def screener(self) -> ScreenerResourceWithStreamingResponse:
         return ScreenerResourceWithStreamingResponse(self._stocks.screener)
 
-    @cached_property
-    def news(self) -> NewsResourceWithStreamingResponse:
-        return NewsResourceWithStreamingResponse(self._stocks.news)
-
 
 class AsyncStocksResourceWithStreamingResponse:
     def __init__(self, stocks: AsyncStocksResource) -> None:
@@ -221,7 +193,3 @@ class AsyncStocksResourceWithStreamingResponse:
     @cached_property
     def screener(self) -> AsyncScreenerResourceWithStreamingResponse:
         return AsyncScreenerResourceWithStreamingResponse(self._stocks.screener)
-
-    @cached_property
-    def news(self) -> AsyncNewsResourceWithStreamingResponse:
-        return AsyncNewsResourceWithStreamingResponse(self._stocks.news)

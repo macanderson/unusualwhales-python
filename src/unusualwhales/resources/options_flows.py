@@ -7,23 +7,23 @@ from datetime import date
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
+from ..types import options_flow_list_params, options_flow_retrieve_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.options import options_flow_list_params, options_flow_retrieve_params
-from ...types.options.options_flow_list_response import OptionsFlowListResponse
-from ...types.options.options_flow_retrieve_response import OptionsFlowRetrieveResponse
+from .._base_client import make_request_options
+from ..types.options_flow_list_response import OptionsFlowListResponse
+from ..types.options_flow_retrieve_response import OptionsFlowRetrieveResponse
 
 __all__ = ["OptionsFlowsResource", "AsyncOptionsFlowsResource"]
 

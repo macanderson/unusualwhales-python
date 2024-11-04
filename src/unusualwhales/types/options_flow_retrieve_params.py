@@ -6,7 +6,7 @@ import datetime
 from typing import Union
 from typing_extensions import Annotated, TypedDict
 
-from ..._utils import PropertyInfo
+from .._utils import PropertyInfo
 
 __all__ = ["OptionsFlowRetrieveParams"]
 
