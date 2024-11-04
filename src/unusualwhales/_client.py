@@ -51,7 +51,7 @@ class Unusualwhales(SyncAPIClient):
     institutions: resources.InstitutionsResource
     darkpool: resources.DarkpoolResource
     etf: resources.EtfResource
-    options: resources.OptionsResource
+    options_flows: resources.OptionsFlowsResource
     with_raw_response: UnusualwhalesWithRawResponse
     with_streaming_response: UnusualwhalesWithStreamedResponse
 
@@ -114,7 +114,7 @@ class Unusualwhales(SyncAPIClient):
         self.institutions = resources.InstitutionsResource(self)
         self.darkpool = resources.DarkpoolResource(self)
         self.etf = resources.EtfResource(self)
-        self.options = resources.OptionsResource(self)
+        self.options_flows = resources.OptionsFlowsResource(self)
         self.with_raw_response = UnusualwhalesWithRawResponse(self)
         self.with_streaming_response = UnusualwhalesWithStreamedResponse(self)
 
@@ -229,7 +229,7 @@ class AsyncUnusualwhales(AsyncAPIClient):
     institutions: resources.AsyncInstitutionsResource
     darkpool: resources.AsyncDarkpoolResource
     etf: resources.AsyncEtfResource
-    options: resources.AsyncOptionsResource
+    options_flows: resources.AsyncOptionsFlowsResource
     with_raw_response: AsyncUnusualwhalesWithRawResponse
     with_streaming_response: AsyncUnusualwhalesWithStreamedResponse
 
@@ -292,7 +292,7 @@ class AsyncUnusualwhales(AsyncAPIClient):
         self.institutions = resources.AsyncInstitutionsResource(self)
         self.darkpool = resources.AsyncDarkpoolResource(self)
         self.etf = resources.AsyncEtfResource(self)
-        self.options = resources.AsyncOptionsResource(self)
+        self.options_flows = resources.AsyncOptionsFlowsResource(self)
         self.with_raw_response = AsyncUnusualwhalesWithRawResponse(self)
         self.with_streaming_response = AsyncUnusualwhalesWithStreamedResponse(self)
 
@@ -408,7 +408,7 @@ class UnusualwhalesWithRawResponse:
         self.institutions = resources.InstitutionsResourceWithRawResponse(client.institutions)
         self.darkpool = resources.DarkpoolResourceWithRawResponse(client.darkpool)
         self.etf = resources.EtfResourceWithRawResponse(client.etf)
-        self.options = resources.OptionsResourceWithRawResponse(client.options)
+        self.options_flows = resources.OptionsFlowsResourceWithRawResponse(client.options_flows)
 
 
 class AsyncUnusualwhalesWithRawResponse:
@@ -418,7 +418,7 @@ class AsyncUnusualwhalesWithRawResponse:
         self.institutions = resources.AsyncInstitutionsResourceWithRawResponse(client.institutions)
         self.darkpool = resources.AsyncDarkpoolResourceWithRawResponse(client.darkpool)
         self.etf = resources.AsyncEtfResourceWithRawResponse(client.etf)
-        self.options = resources.AsyncOptionsResourceWithRawResponse(client.options)
+        self.options_flows = resources.AsyncOptionsFlowsResourceWithRawResponse(client.options_flows)
 
 
 class UnusualwhalesWithStreamedResponse:
@@ -428,7 +428,7 @@ class UnusualwhalesWithStreamedResponse:
         self.institutions = resources.InstitutionsResourceWithStreamingResponse(client.institutions)
         self.darkpool = resources.DarkpoolResourceWithStreamingResponse(client.darkpool)
         self.etf = resources.EtfResourceWithStreamingResponse(client.etf)
-        self.options = resources.OptionsResourceWithStreamingResponse(client.options)
+        self.options_flows = resources.OptionsFlowsResourceWithStreamingResponse(client.options_flows)
 
 
 class AsyncUnusualwhalesWithStreamedResponse:
@@ -438,7 +438,7 @@ class AsyncUnusualwhalesWithStreamedResponse:
         self.institutions = resources.AsyncInstitutionsResourceWithStreamingResponse(client.institutions)
         self.darkpool = resources.AsyncDarkpoolResourceWithStreamingResponse(client.darkpool)
         self.etf = resources.AsyncEtfResourceWithStreamingResponse(client.etf)
-        self.options = resources.AsyncOptionsResourceWithStreamingResponse(client.options)
+        self.options_flows = resources.AsyncOptionsFlowsResourceWithStreamingResponse(client.options_flows)
 
 
 Client = Unusualwhales

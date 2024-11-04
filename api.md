@@ -124,17 +124,15 @@ Methods:
 
 - <code title="get /etf/holdings">client.etf.holdings.<a href="./src/unusualwhales/resources/etf/holdings.py">list</a>(\*\*<a href="src/unusualwhales/types/etf/holding_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/etf/holding_list_response.py">HoldingListResponse</a></code>
 
-# Options
-
-## OptionsFlows
+# OptionsFlows
 
 Types:
 
 ```python
-from unusualwhales.types.options import OptionsFlowRetrieveResponse, OptionsFlowListResponse
+from unusualwhales.types import OptionsFlowRetrieveResponse, OptionsFlowListResponse
 ```
 
 Methods:
 
-- <code title="get /options/flow/{symbol}">client.options.options_flows.<a href="./src/unusualwhales/resources/options/options_flows.py">retrieve</a>(symbol, \*\*<a href="src/unusualwhales/types/options/options_flow_retrieve_params.py">params</a>) -> <a href="./src/unusualwhales/types/options/options_flow_retrieve_response.py">OptionsFlowRetrieveResponse</a></code>
-- <code title="get /options/flow">client.options.options_flows.<a href="./src/unusualwhales/resources/options/options_flows.py">list</a>(\*\*<a href="src/unusualwhales/types/options/options_flow_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/options/options_flow_list_response.py">OptionsFlowListResponse</a></code>
+- <code title="get /options/flow/{symbol}">client.options_flows.<a href="./src/unusualwhales/resources/options_flows.py">retrieve</a>(symbol, \*\*<a href="src/unusualwhales/types/options_flow_retrieve_params.py">params</a>) -> <a href="./src/unusualwhales/types/options_flow_retrieve_response.py">OptionsFlowRetrieveResponse</a></code>
+- <code title="get /options/flow">client.options_flows.<a href="./src/unusualwhales/resources/options_flows.py">list</a>(\*\*<a href="src/unusualwhales/types/options_flow_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/options_flow_list_response.py">OptionsFlowListResponse</a></code>
