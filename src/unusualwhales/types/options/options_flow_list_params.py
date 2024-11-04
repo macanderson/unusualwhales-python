@@ -6,11 +6,14 @@ import datetime
 from typing import Union
 from typing_extensions import Annotated, TypedDict
 
-from .._utils import PropertyInfo
+from ..._utils import PropertyInfo
 
-__all__ = ["OptionsFlowRetrieveParams"]
+__all__ = ["OptionsFlowListParams"]
 
 
-class OptionsFlowRetrieveParams(TypedDict, total=False):
+class OptionsFlowListParams(TypedDict, total=False):
     date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
     """Date to filter the options flow data."""
+
+    symbol: str
+    """Stock symbol to filter the options flow data."""
