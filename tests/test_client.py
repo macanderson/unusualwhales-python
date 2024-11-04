@@ -718,11 +718,11 @@ class TestUnusualwhales:
     @mock.patch("unusualwhales._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/options/flow/symbol").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             self.client.get(
-                "/stocks/price/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/options/flow/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -730,11 +730,11 @@ class TestUnusualwhales:
     @mock.patch("unusualwhales._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/stocks/price/symbol").mock(return_value=httpx.Response(500))
+        respx_mock.get("/options/flow/symbol").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             self.client.get(
-                "/stocks/price/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/options/flow/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -763,9 +763,9 @@ class TestUnusualwhales:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=retry_handler)
+        respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = client.stocks.with_raw_response.retrieve("symbol")
+        response = client.options_flows.with_raw_response.retrieve(symbol="symbol")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -787,9 +787,11 @@ class TestUnusualwhales:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=retry_handler)
+        respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = client.stocks.with_raw_response.retrieve("symbol", extra_headers={"x-stainless-retry-count": Omit()})
+        response = client.options_flows.with_raw_response.retrieve(
+            symbol="symbol", extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -810,9 +812,11 @@ class TestUnusualwhales:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=retry_handler)
+        respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = client.stocks.with_raw_response.retrieve("symbol", extra_headers={"x-stainless-retry-count": "42"})
+        response = client.options_flows.with_raw_response.retrieve(
+            symbol="symbol", extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1488,11 +1492,11 @@ class TestAsyncUnusualwhales:
     @mock.patch("unusualwhales._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/options/flow/symbol").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             await self.client.get(
-                "/stocks/price/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/options/flow/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1500,11 +1504,11 @@ class TestAsyncUnusualwhales:
     @mock.patch("unusualwhales._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/stocks/price/symbol").mock(return_value=httpx.Response(500))
+        respx_mock.get("/options/flow/symbol").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await self.client.get(
-                "/stocks/price/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/options/flow/symbol", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1534,9 +1538,9 @@ class TestAsyncUnusualwhales:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=retry_handler)
+        respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = await client.stocks.with_raw_response.retrieve("symbol")
+        response = await client.options_flows.with_raw_response.retrieve(symbol="symbol")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1559,10 +1563,10 @@ class TestAsyncUnusualwhales:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=retry_handler)
+        respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = await client.stocks.with_raw_response.retrieve(
-            "symbol", extra_headers={"x-stainless-retry-count": Omit()}
+        response = await client.options_flows.with_raw_response.retrieve(
+            symbol="symbol", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1585,10 +1589,10 @@ class TestAsyncUnusualwhales:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/stocks/price/symbol").mock(side_effect=retry_handler)
+        respx_mock.get("/options/flow/symbol").mock(side_effect=retry_handler)
 
-        response = await client.stocks.with_raw_response.retrieve(
-            "symbol", extra_headers={"x-stainless-retry-count": "42"}
+        response = await client.options_flows.with_raw_response.retrieve(
+            symbol="symbol", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
