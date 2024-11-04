@@ -53,6 +53,10 @@ class Unusualwhales(SyncAPIClient):
     institutions: resources.InstitutionsResource
     darkpool: resources.DarkpoolResource
     etf: resources.EtfResource
+    options: resources.OptionsResource
+    seasonality: resources.SeasonalityResource
+    analyst: resources.AnalystResource
+    market: resources.MarketResource
     with_raw_response: UnusualwhalesWithRawResponse
     with_streaming_response: UnusualwhalesWithStreamedResponse
 
@@ -117,6 +121,10 @@ class Unusualwhales(SyncAPIClient):
         self.institutions = resources.InstitutionsResource(self)
         self.darkpool = resources.DarkpoolResource(self)
         self.etf = resources.EtfResource(self)
+        self.options = resources.OptionsResource(self)
+        self.seasonality = resources.SeasonalityResource(self)
+        self.analyst = resources.AnalystResource(self)
+        self.market = resources.MarketResource(self)
         self.with_raw_response = UnusualwhalesWithRawResponse(self)
         self.with_streaming_response = UnusualwhalesWithStreamedResponse(self)
 
@@ -233,6 +241,10 @@ class AsyncUnusualwhales(AsyncAPIClient):
     institutions: resources.AsyncInstitutionsResource
     darkpool: resources.AsyncDarkpoolResource
     etf: resources.AsyncEtfResource
+    options: resources.AsyncOptionsResource
+    seasonality: resources.AsyncSeasonalityResource
+    analyst: resources.AsyncAnalystResource
+    market: resources.AsyncMarketResource
     with_raw_response: AsyncUnusualwhalesWithRawResponse
     with_streaming_response: AsyncUnusualwhalesWithStreamedResponse
 
@@ -297,6 +309,10 @@ class AsyncUnusualwhales(AsyncAPIClient):
         self.institutions = resources.AsyncInstitutionsResource(self)
         self.darkpool = resources.AsyncDarkpoolResource(self)
         self.etf = resources.AsyncEtfResource(self)
+        self.options = resources.AsyncOptionsResource(self)
+        self.seasonality = resources.AsyncSeasonalityResource(self)
+        self.analyst = resources.AsyncAnalystResource(self)
+        self.market = resources.AsyncMarketResource(self)
         self.with_raw_response = AsyncUnusualwhalesWithRawResponse(self)
         self.with_streaming_response = AsyncUnusualwhalesWithStreamedResponse(self)
 
@@ -414,6 +430,10 @@ class UnusualwhalesWithRawResponse:
         self.institutions = resources.InstitutionsResourceWithRawResponse(client.institutions)
         self.darkpool = resources.DarkpoolResourceWithRawResponse(client.darkpool)
         self.etf = resources.EtfResourceWithRawResponse(client.etf)
+        self.options = resources.OptionsResourceWithRawResponse(client.options)
+        self.seasonality = resources.SeasonalityResourceWithRawResponse(client.seasonality)
+        self.analyst = resources.AnalystResourceWithRawResponse(client.analyst)
+        self.market = resources.MarketResourceWithRawResponse(client.market)
 
 
 class AsyncUnusualwhalesWithRawResponse:
@@ -425,6 +445,10 @@ class AsyncUnusualwhalesWithRawResponse:
         self.institutions = resources.AsyncInstitutionsResourceWithRawResponse(client.institutions)
         self.darkpool = resources.AsyncDarkpoolResourceWithRawResponse(client.darkpool)
         self.etf = resources.AsyncEtfResourceWithRawResponse(client.etf)
+        self.options = resources.AsyncOptionsResourceWithRawResponse(client.options)
+        self.seasonality = resources.AsyncSeasonalityResourceWithRawResponse(client.seasonality)
+        self.analyst = resources.AsyncAnalystResourceWithRawResponse(client.analyst)
+        self.market = resources.AsyncMarketResourceWithRawResponse(client.market)
 
 
 class UnusualwhalesWithStreamedResponse:
@@ -436,6 +460,10 @@ class UnusualwhalesWithStreamedResponse:
         self.institutions = resources.InstitutionsResourceWithStreamingResponse(client.institutions)
         self.darkpool = resources.DarkpoolResourceWithStreamingResponse(client.darkpool)
         self.etf = resources.EtfResourceWithStreamingResponse(client.etf)
+        self.options = resources.OptionsResourceWithStreamingResponse(client.options)
+        self.seasonality = resources.SeasonalityResourceWithStreamingResponse(client.seasonality)
+        self.analyst = resources.AnalystResourceWithStreamingResponse(client.analyst)
+        self.market = resources.MarketResourceWithStreamingResponse(client.market)
 
 
 class AsyncUnusualwhalesWithStreamedResponse:
@@ -447,6 +475,10 @@ class AsyncUnusualwhalesWithStreamedResponse:
         self.institutions = resources.AsyncInstitutionsResourceWithStreamingResponse(client.institutions)
         self.darkpool = resources.AsyncDarkpoolResourceWithStreamingResponse(client.darkpool)
         self.etf = resources.AsyncEtfResourceWithStreamingResponse(client.etf)
+        self.options = resources.AsyncOptionsResourceWithStreamingResponse(client.options)
+        self.seasonality = resources.AsyncSeasonalityResourceWithStreamingResponse(client.seasonality)
+        self.analyst = resources.AsyncAnalystResourceWithStreamingResponse(client.analyst)
+        self.market = resources.AsyncMarketResourceWithStreamingResponse(client.market)
 
 
 Client = Unusualwhales
