@@ -46,13 +46,12 @@ __all__ = [
 
 
 class Unusualwhales(SyncAPIClient):
-    options_flows: resources.OptionsFlowsResource
     stocks: resources.StocksResource
-    news: resources.NewsResource
     congress: resources.CongressResource
     institutions: resources.InstitutionsResource
     darkpool: resources.DarkpoolResource
     etf: resources.EtfResource
+    options: resources.OptionsResource
     with_raw_response: UnusualwhalesWithRawResponse
     with_streaming_response: UnusualwhalesWithStreamedResponse
 
@@ -110,13 +109,12 @@ class Unusualwhales(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.options_flows = resources.OptionsFlowsResource(self)
         self.stocks = resources.StocksResource(self)
-        self.news = resources.NewsResource(self)
         self.congress = resources.CongressResource(self)
         self.institutions = resources.InstitutionsResource(self)
         self.darkpool = resources.DarkpoolResource(self)
         self.etf = resources.EtfResource(self)
+        self.options = resources.OptionsResource(self)
         self.with_raw_response = UnusualwhalesWithRawResponse(self)
         self.with_streaming_response = UnusualwhalesWithStreamedResponse(self)
 
@@ -226,13 +224,12 @@ class Unusualwhales(SyncAPIClient):
 
 
 class AsyncUnusualwhales(AsyncAPIClient):
-    options_flows: resources.AsyncOptionsFlowsResource
     stocks: resources.AsyncStocksResource
-    news: resources.AsyncNewsResource
     congress: resources.AsyncCongressResource
     institutions: resources.AsyncInstitutionsResource
     darkpool: resources.AsyncDarkpoolResource
     etf: resources.AsyncEtfResource
+    options: resources.AsyncOptionsResource
     with_raw_response: AsyncUnusualwhalesWithRawResponse
     with_streaming_response: AsyncUnusualwhalesWithStreamedResponse
 
@@ -290,13 +287,12 @@ class AsyncUnusualwhales(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.options_flows = resources.AsyncOptionsFlowsResource(self)
         self.stocks = resources.AsyncStocksResource(self)
-        self.news = resources.AsyncNewsResource(self)
         self.congress = resources.AsyncCongressResource(self)
         self.institutions = resources.AsyncInstitutionsResource(self)
         self.darkpool = resources.AsyncDarkpoolResource(self)
         self.etf = resources.AsyncEtfResource(self)
+        self.options = resources.AsyncOptionsResource(self)
         self.with_raw_response = AsyncUnusualwhalesWithRawResponse(self)
         self.with_streaming_response = AsyncUnusualwhalesWithStreamedResponse(self)
 
@@ -407,46 +403,42 @@ class AsyncUnusualwhales(AsyncAPIClient):
 
 class UnusualwhalesWithRawResponse:
     def __init__(self, client: Unusualwhales) -> None:
-        self.options_flows = resources.OptionsFlowsResourceWithRawResponse(client.options_flows)
         self.stocks = resources.StocksResourceWithRawResponse(client.stocks)
-        self.news = resources.NewsResourceWithRawResponse(client.news)
         self.congress = resources.CongressResourceWithRawResponse(client.congress)
         self.institutions = resources.InstitutionsResourceWithRawResponse(client.institutions)
         self.darkpool = resources.DarkpoolResourceWithRawResponse(client.darkpool)
         self.etf = resources.EtfResourceWithRawResponse(client.etf)
+        self.options = resources.OptionsResourceWithRawResponse(client.options)
 
 
 class AsyncUnusualwhalesWithRawResponse:
     def __init__(self, client: AsyncUnusualwhales) -> None:
-        self.options_flows = resources.AsyncOptionsFlowsResourceWithRawResponse(client.options_flows)
         self.stocks = resources.AsyncStocksResourceWithRawResponse(client.stocks)
-        self.news = resources.AsyncNewsResourceWithRawResponse(client.news)
         self.congress = resources.AsyncCongressResourceWithRawResponse(client.congress)
         self.institutions = resources.AsyncInstitutionsResourceWithRawResponse(client.institutions)
         self.darkpool = resources.AsyncDarkpoolResourceWithRawResponse(client.darkpool)
         self.etf = resources.AsyncEtfResourceWithRawResponse(client.etf)
+        self.options = resources.AsyncOptionsResourceWithRawResponse(client.options)
 
 
 class UnusualwhalesWithStreamedResponse:
     def __init__(self, client: Unusualwhales) -> None:
-        self.options_flows = resources.OptionsFlowsResourceWithStreamingResponse(client.options_flows)
         self.stocks = resources.StocksResourceWithStreamingResponse(client.stocks)
-        self.news = resources.NewsResourceWithStreamingResponse(client.news)
         self.congress = resources.CongressResourceWithStreamingResponse(client.congress)
         self.institutions = resources.InstitutionsResourceWithStreamingResponse(client.institutions)
         self.darkpool = resources.DarkpoolResourceWithStreamingResponse(client.darkpool)
         self.etf = resources.EtfResourceWithStreamingResponse(client.etf)
+        self.options = resources.OptionsResourceWithStreamingResponse(client.options)
 
 
 class AsyncUnusualwhalesWithStreamedResponse:
     def __init__(self, client: AsyncUnusualwhales) -> None:
-        self.options_flows = resources.AsyncOptionsFlowsResourceWithStreamingResponse(client.options_flows)
         self.stocks = resources.AsyncStocksResourceWithStreamingResponse(client.stocks)
-        self.news = resources.AsyncNewsResourceWithStreamingResponse(client.news)
         self.congress = resources.AsyncCongressResourceWithStreamingResponse(client.congress)
         self.institutions = resources.AsyncInstitutionsResourceWithStreamingResponse(client.institutions)
         self.darkpool = resources.AsyncDarkpoolResourceWithStreamingResponse(client.darkpool)
         self.etf = resources.AsyncEtfResourceWithStreamingResponse(client.etf)
+        self.options = resources.AsyncOptionsResourceWithStreamingResponse(client.options)
 
 
 Client = Unusualwhales

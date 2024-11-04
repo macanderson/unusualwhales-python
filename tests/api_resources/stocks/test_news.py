@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
-from unusualwhales.types import NewsListResponse
+from unusualwhales.types.stocks import NewsListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,19 +19,19 @@ class TestNews:
 
     @parametrize
     def test_method_list(self, client: Unusualwhales) -> None:
-        news = client.news.list()
+        news = client.stocks.news.list()
         assert_matches_type(NewsListResponse, news, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unusualwhales) -> None:
-        news = client.news.list(
+        news = client.stocks.news.list(
             symbols="symbols",
         )
         assert_matches_type(NewsListResponse, news, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unusualwhales) -> None:
-        response = client.news.with_raw_response.list()
+        response = client.stocks.news.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -40,7 +40,7 @@ class TestNews:
 
     @parametrize
     def test_streaming_response_list(self, client: Unusualwhales) -> None:
-        with client.news.with_streaming_response.list() as response:
+        with client.stocks.news.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -55,19 +55,19 @@ class TestAsyncNews:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnusualwhales) -> None:
-        news = await async_client.news.list()
+        news = await async_client.stocks.news.list()
         assert_matches_type(NewsListResponse, news, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnusualwhales) -> None:
-        news = await async_client.news.list(
+        news = await async_client.stocks.news.list(
             symbols="symbols",
         )
         assert_matches_type(NewsListResponse, news, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnusualwhales) -> None:
-        response = await async_client.news.with_raw_response.list()
+        response = await async_client.stocks.news.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -76,7 +76,7 @@ class TestAsyncNews:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnusualwhales) -> None:
-        async with async_client.news.with_streaming_response.list() as response:
+        async with async_client.stocks.news.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
