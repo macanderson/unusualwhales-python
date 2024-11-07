@@ -9,6 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
+from unusualwhales.types import InstitutionListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +20,7 @@ class TestInstitutions:
     @parametrize
     def test_method_list(self, client: Unusualwhales) -> None:
         institution = client.institutions.list()
-        assert_matches_type(object, institution, path=["response"])
+        assert_matches_type(InstitutionListResponse, institution, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unusualwhales) -> None:
@@ -28,7 +29,7 @@ class TestInstitutions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         institution = response.parse()
-        assert_matches_type(object, institution, path=["response"])
+        assert_matches_type(InstitutionListResponse, institution, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unusualwhales) -> None:
@@ -37,7 +38,7 @@ class TestInstitutions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             institution = response.parse()
-            assert_matches_type(object, institution, path=["response"])
+            assert_matches_type(InstitutionListResponse, institution, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -48,7 +49,7 @@ class TestAsyncInstitutions:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnusualwhales) -> None:
         institution = await async_client.institutions.list()
-        assert_matches_type(object, institution, path=["response"])
+        assert_matches_type(InstitutionListResponse, institution, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnusualwhales) -> None:
@@ -57,7 +58,7 @@ class TestAsyncInstitutions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         institution = await response.parse()
-        assert_matches_type(object, institution, path=["response"])
+        assert_matches_type(InstitutionListResponse, institution, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnusualwhales) -> None:
@@ -66,6 +67,6 @@ class TestAsyncInstitutions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             institution = await response.parse()
-            assert_matches_type(object, institution, path=["response"])
+            assert_matches_type(InstitutionListResponse, institution, path=["response"])
 
         assert cast(Any, response.is_closed) is True

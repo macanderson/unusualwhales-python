@@ -29,7 +29,31 @@ from ..._utils import (
     maybe_transform,
     async_maybe_transform,
 )
+from .contract import (
+    ContractResource,
+    AsyncContractResource,
+    ContractResourceWithRawResponse,
+    AsyncContractResourceWithRawResponse,
+    ContractResourceWithStreamingResponse,
+    AsyncContractResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
+from .contracts import (
+    ContractsResource,
+    AsyncContractsResource,
+    ContractsResourceWithRawResponse,
+    AsyncContractsResourceWithRawResponse,
+    ContractsResourceWithStreamingResponse,
+    AsyncContractsResourceWithStreamingResponse,
+)
+from .oi_change import (
+    OiChangeResource,
+    AsyncOiChangeResource,
+    OiChangeResourceWithRawResponse,
+    AsyncOiChangeResourceWithRawResponse,
+    OiChangeResourceWithStreamingResponse,
+    AsyncOiChangeResourceWithStreamingResponse,
+)
 from .historical import (
     HistoricalResource,
     AsyncHistoricalResource,
@@ -53,7 +77,33 @@ from .expirations import (
     ExpirationsResourceWithStreamingResponse,
     AsyncExpirationsResourceWithStreamingResponse,
 )
+from .greeks_flow import (
+    GreeksFlowResource,
+    AsyncGreeksFlowResource,
+    GreeksFlowResourceWithRawResponse,
+    AsyncGreeksFlowResourceWithRawResponse,
+    GreeksFlowResourceWithStreamingResponse,
+    AsyncGreeksFlowResourceWithStreamingResponse,
+)
+from .total_volume import (
+    TotalVolumeResource,
+    AsyncTotalVolumeResource,
+    TotalVolumeResourceWithRawResponse,
+    AsyncTotalVolumeResourceWithRawResponse,
+    TotalVolumeResourceWithStreamingResponse,
+    AsyncTotalVolumeResourceWithStreamingResponse,
+)
 from ..._base_client import make_request_options
+from .greeks_flow_expiry import (
+    GreeksFlowExpiryResource,
+    AsyncGreeksFlowExpiryResource,
+    GreeksFlowExpiryResourceWithRawResponse,
+    AsyncGreeksFlowExpiryResourceWithRawResponse,
+    GreeksFlowExpiryResourceWithStreamingResponse,
+    AsyncGreeksFlowExpiryResourceWithStreamingResponse,
+)
+from ...types.options_flow_list_response import OptionsFlowListResponse
+from ...types.options_flow_retrieve_response import OptionsFlowRetrieveResponse
 
 __all__ = ["OptionsFlowsResource", "AsyncOptionsFlowsResource"]
 
@@ -74,6 +124,30 @@ class OptionsFlowsResource(SyncAPIResource):
     @cached_property
     def historical(self) -> HistoricalResource:
         return HistoricalResource(self._client)
+
+    @cached_property
+    def greeks_flow(self) -> GreeksFlowResource:
+        return GreeksFlowResource(self._client)
+
+    @cached_property
+    def greeks_flow_expiry(self) -> GreeksFlowExpiryResource:
+        return GreeksFlowExpiryResource(self._client)
+
+    @cached_property
+    def oi_change(self) -> OiChangeResource:
+        return OiChangeResource(self._client)
+
+    @cached_property
+    def total_volume(self) -> TotalVolumeResource:
+        return TotalVolumeResource(self._client)
+
+    @cached_property
+    def contract(self) -> ContractResource:
+        return ContractResource(self._client)
+
+    @cached_property
+    def contracts(self) -> ContractsResource:
+        return ContractsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> OptionsFlowsResourceWithRawResponse:
@@ -99,24 +173,18 @@ class OptionsFlowsResource(SyncAPIResource):
         symbol: str,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
-        max_premium: float | NotGiven = NOT_GIVEN,
-        min_premium: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> OptionsFlowRetrieveResponse:
         """
         Retrieve options flow data for a specific symbol.
 
         Args:
           date: Date to filter the options flow data.
-
-          max_premium: Maximum premium to filter the options flow data.
-
-          min_premium: Minimum premium to filter the options flow data.
 
           extra_headers: Send extra headers
 
@@ -135,24 +203,15 @@ class OptionsFlowsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "date": date,
-                        "max_premium": max_premium,
-                        "min_premium": min_premium,
-                    },
-                    options_flow_retrieve_params.OptionsFlowRetrieveParams,
-                ),
+                query=maybe_transform({"date": date}, options_flow_retrieve_params.OptionsFlowRetrieveParams),
             ),
-            cast_to=object,
+            cast_to=OptionsFlowRetrieveResponse,
         )
 
     def list(
         self,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
-        max_premium: float | NotGiven = NOT_GIVEN,
-        min_premium: float | NotGiven = NOT_GIVEN,
         symbol: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -160,16 +219,12 @@ class OptionsFlowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> OptionsFlowListResponse:
         """
         Retrieve options flow data.
 
         Args:
           date: Date to filter the options flow data.
-
-          max_premium: Maximum premium to filter the options flow data.
-
-          min_premium: Minimum premium to filter the options flow data.
 
           symbol: Stock symbol to filter the options flow data.
 
@@ -191,14 +246,12 @@ class OptionsFlowsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "date": date,
-                        "max_premium": max_premium,
-                        "min_premium": min_premium,
                         "symbol": symbol,
                     },
                     options_flow_list_params.OptionsFlowListParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=OptionsFlowListResponse,
         )
 
 
@@ -218,6 +271,30 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
     @cached_property
     def historical(self) -> AsyncHistoricalResource:
         return AsyncHistoricalResource(self._client)
+
+    @cached_property
+    def greeks_flow(self) -> AsyncGreeksFlowResource:
+        return AsyncGreeksFlowResource(self._client)
+
+    @cached_property
+    def greeks_flow_expiry(self) -> AsyncGreeksFlowExpiryResource:
+        return AsyncGreeksFlowExpiryResource(self._client)
+
+    @cached_property
+    def oi_change(self) -> AsyncOiChangeResource:
+        return AsyncOiChangeResource(self._client)
+
+    @cached_property
+    def total_volume(self) -> AsyncTotalVolumeResource:
+        return AsyncTotalVolumeResource(self._client)
+
+    @cached_property
+    def contract(self) -> AsyncContractResource:
+        return AsyncContractResource(self._client)
+
+    @cached_property
+    def contracts(self) -> AsyncContractsResource:
+        return AsyncContractsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncOptionsFlowsResourceWithRawResponse:
@@ -243,24 +320,18 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
         symbol: str,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
-        max_premium: float | NotGiven = NOT_GIVEN,
-        min_premium: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> OptionsFlowRetrieveResponse:
         """
         Retrieve options flow data for a specific symbol.
 
         Args:
           date: Date to filter the options flow data.
-
-          max_premium: Maximum premium to filter the options flow data.
-
-          min_premium: Minimum premium to filter the options flow data.
 
           extra_headers: Send extra headers
 
@@ -280,23 +351,16 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {
-                        "date": date,
-                        "max_premium": max_premium,
-                        "min_premium": min_premium,
-                    },
-                    options_flow_retrieve_params.OptionsFlowRetrieveParams,
+                    {"date": date}, options_flow_retrieve_params.OptionsFlowRetrieveParams
                 ),
             ),
-            cast_to=object,
+            cast_to=OptionsFlowRetrieveResponse,
         )
 
     async def list(
         self,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
-        max_premium: float | NotGiven = NOT_GIVEN,
-        min_premium: float | NotGiven = NOT_GIVEN,
         symbol: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -304,16 +368,12 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> OptionsFlowListResponse:
         """
         Retrieve options flow data.
 
         Args:
           date: Date to filter the options flow data.
-
-          max_premium: Maximum premium to filter the options flow data.
-
-          min_premium: Minimum premium to filter the options flow data.
 
           symbol: Stock symbol to filter the options flow data.
 
@@ -335,14 +395,12 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "date": date,
-                        "max_premium": max_premium,
-                        "min_premium": min_premium,
                         "symbol": symbol,
                     },
                     options_flow_list_params.OptionsFlowListParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=OptionsFlowListResponse,
         )
 
 
@@ -373,6 +431,30 @@ class OptionsFlowsResourceWithRawResponse:
     def historical(self) -> HistoricalResourceWithRawResponse:
         return HistoricalResourceWithRawResponse(self._options_flows.historical)
 
+    @cached_property
+    def greeks_flow(self) -> GreeksFlowResourceWithRawResponse:
+        return GreeksFlowResourceWithRawResponse(self._options_flows.greeks_flow)
+
+    @cached_property
+    def greeks_flow_expiry(self) -> GreeksFlowExpiryResourceWithRawResponse:
+        return GreeksFlowExpiryResourceWithRawResponse(self._options_flows.greeks_flow_expiry)
+
+    @cached_property
+    def oi_change(self) -> OiChangeResourceWithRawResponse:
+        return OiChangeResourceWithRawResponse(self._options_flows.oi_change)
+
+    @cached_property
+    def total_volume(self) -> TotalVolumeResourceWithRawResponse:
+        return TotalVolumeResourceWithRawResponse(self._options_flows.total_volume)
+
+    @cached_property
+    def contract(self) -> ContractResourceWithRawResponse:
+        return ContractResourceWithRawResponse(self._options_flows.contract)
+
+    @cached_property
+    def contracts(self) -> ContractsResourceWithRawResponse:
+        return ContractsResourceWithRawResponse(self._options_flows.contracts)
+
 
 class AsyncOptionsFlowsResourceWithRawResponse:
     def __init__(self, options_flows: AsyncOptionsFlowsResource) -> None:
@@ -400,6 +482,30 @@ class AsyncOptionsFlowsResourceWithRawResponse:
     @cached_property
     def historical(self) -> AsyncHistoricalResourceWithRawResponse:
         return AsyncHistoricalResourceWithRawResponse(self._options_flows.historical)
+
+    @cached_property
+    def greeks_flow(self) -> AsyncGreeksFlowResourceWithRawResponse:
+        return AsyncGreeksFlowResourceWithRawResponse(self._options_flows.greeks_flow)
+
+    @cached_property
+    def greeks_flow_expiry(self) -> AsyncGreeksFlowExpiryResourceWithRawResponse:
+        return AsyncGreeksFlowExpiryResourceWithRawResponse(self._options_flows.greeks_flow_expiry)
+
+    @cached_property
+    def oi_change(self) -> AsyncOiChangeResourceWithRawResponse:
+        return AsyncOiChangeResourceWithRawResponse(self._options_flows.oi_change)
+
+    @cached_property
+    def total_volume(self) -> AsyncTotalVolumeResourceWithRawResponse:
+        return AsyncTotalVolumeResourceWithRawResponse(self._options_flows.total_volume)
+
+    @cached_property
+    def contract(self) -> AsyncContractResourceWithRawResponse:
+        return AsyncContractResourceWithRawResponse(self._options_flows.contract)
+
+    @cached_property
+    def contracts(self) -> AsyncContractsResourceWithRawResponse:
+        return AsyncContractsResourceWithRawResponse(self._options_flows.contracts)
 
 
 class OptionsFlowsResourceWithStreamingResponse:
@@ -429,6 +535,30 @@ class OptionsFlowsResourceWithStreamingResponse:
     def historical(self) -> HistoricalResourceWithStreamingResponse:
         return HistoricalResourceWithStreamingResponse(self._options_flows.historical)
 
+    @cached_property
+    def greeks_flow(self) -> GreeksFlowResourceWithStreamingResponse:
+        return GreeksFlowResourceWithStreamingResponse(self._options_flows.greeks_flow)
+
+    @cached_property
+    def greeks_flow_expiry(self) -> GreeksFlowExpiryResourceWithStreamingResponse:
+        return GreeksFlowExpiryResourceWithStreamingResponse(self._options_flows.greeks_flow_expiry)
+
+    @cached_property
+    def oi_change(self) -> OiChangeResourceWithStreamingResponse:
+        return OiChangeResourceWithStreamingResponse(self._options_flows.oi_change)
+
+    @cached_property
+    def total_volume(self) -> TotalVolumeResourceWithStreamingResponse:
+        return TotalVolumeResourceWithStreamingResponse(self._options_flows.total_volume)
+
+    @cached_property
+    def contract(self) -> ContractResourceWithStreamingResponse:
+        return ContractResourceWithStreamingResponse(self._options_flows.contract)
+
+    @cached_property
+    def contracts(self) -> ContractsResourceWithStreamingResponse:
+        return ContractsResourceWithStreamingResponse(self._options_flows.contracts)
+
 
 class AsyncOptionsFlowsResourceWithStreamingResponse:
     def __init__(self, options_flows: AsyncOptionsFlowsResource) -> None:
@@ -456,3 +586,27 @@ class AsyncOptionsFlowsResourceWithStreamingResponse:
     @cached_property
     def historical(self) -> AsyncHistoricalResourceWithStreamingResponse:
         return AsyncHistoricalResourceWithStreamingResponse(self._options_flows.historical)
+
+    @cached_property
+    def greeks_flow(self) -> AsyncGreeksFlowResourceWithStreamingResponse:
+        return AsyncGreeksFlowResourceWithStreamingResponse(self._options_flows.greeks_flow)
+
+    @cached_property
+    def greeks_flow_expiry(self) -> AsyncGreeksFlowExpiryResourceWithStreamingResponse:
+        return AsyncGreeksFlowExpiryResourceWithStreamingResponse(self._options_flows.greeks_flow_expiry)
+
+    @cached_property
+    def oi_change(self) -> AsyncOiChangeResourceWithStreamingResponse:
+        return AsyncOiChangeResourceWithStreamingResponse(self._options_flows.oi_change)
+
+    @cached_property
+    def total_volume(self) -> AsyncTotalVolumeResourceWithStreamingResponse:
+        return AsyncTotalVolumeResourceWithStreamingResponse(self._options_flows.total_volume)
+
+    @cached_property
+    def contract(self) -> AsyncContractResourceWithStreamingResponse:
+        return AsyncContractResourceWithStreamingResponse(self._options_flows.contract)
+
+    @cached_property
+    def contracts(self) -> AsyncContractsResourceWithStreamingResponse:
+        return AsyncContractsResourceWithStreamingResponse(self._options_flows.contracts)

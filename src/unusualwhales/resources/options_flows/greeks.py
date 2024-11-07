@@ -23,6 +23,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.options_flows import greek_retrieve_params
+from ...types.options_flows.greek_retrieve_response import GreekRetrieveResponse
 
 __all__ = ["GreeksResource", "AsyncGreeksResource"]
 
@@ -60,7 +61,7 @@ class GreeksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> GreekRetrieveResponse:
         """
         Retrieve option greeks data for a specific stock symbol.
 
@@ -97,7 +98,7 @@ class GreeksResource(SyncAPIResource):
                     greek_retrieve_params.GreekRetrieveParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=GreekRetrieveResponse,
         )
 
 
@@ -134,7 +135,7 @@ class AsyncGreeksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> GreekRetrieveResponse:
         """
         Retrieve option greeks data for a specific stock symbol.
 
@@ -171,7 +172,7 @@ class AsyncGreeksResource(AsyncAPIResource):
                     greek_retrieve_params.GreekRetrieveParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=GreekRetrieveResponse,
         )
 
 
