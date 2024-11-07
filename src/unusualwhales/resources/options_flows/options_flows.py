@@ -54,8 +54,6 @@ from .expirations import (
     AsyncExpirationsResourceWithStreamingResponse,
 )
 from ..._base_client import make_request_options
-from ...types.options_flow_list_response import OptionsFlowListResponse
-from ...types.options_flow_retrieve_response import OptionsFlowRetrieveResponse
 
 __all__ = ["OptionsFlowsResource", "AsyncOptionsFlowsResource"]
 
@@ -101,18 +99,24 @@ class OptionsFlowsResource(SyncAPIResource):
         symbol: str,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
+        max_premium: float | NotGiven = NOT_GIVEN,
+        min_premium: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OptionsFlowRetrieveResponse:
+    ) -> object:
         """
         Retrieve options flow data for a specific symbol.
 
         Args:
           date: Date to filter the options flow data.
+
+          max_premium: Maximum premium to filter the options flow data.
+
+          min_premium: Minimum premium to filter the options flow data.
 
           extra_headers: Send extra headers
 
@@ -131,15 +135,24 @@ class OptionsFlowsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"date": date}, options_flow_retrieve_params.OptionsFlowRetrieveParams),
+                query=maybe_transform(
+                    {
+                        "date": date,
+                        "max_premium": max_premium,
+                        "min_premium": min_premium,
+                    },
+                    options_flow_retrieve_params.OptionsFlowRetrieveParams,
+                ),
             ),
-            cast_to=OptionsFlowRetrieveResponse,
+            cast_to=object,
         )
 
     def list(
         self,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
+        max_premium: float | NotGiven = NOT_GIVEN,
+        min_premium: float | NotGiven = NOT_GIVEN,
         symbol: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -147,12 +160,16 @@ class OptionsFlowsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OptionsFlowListResponse:
+    ) -> object:
         """
         Retrieve options flow data.
 
         Args:
           date: Date to filter the options flow data.
+
+          max_premium: Maximum premium to filter the options flow data.
+
+          min_premium: Minimum premium to filter the options flow data.
 
           symbol: Stock symbol to filter the options flow data.
 
@@ -174,12 +191,14 @@ class OptionsFlowsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "date": date,
+                        "max_premium": max_premium,
+                        "min_premium": min_premium,
                         "symbol": symbol,
                     },
                     options_flow_list_params.OptionsFlowListParams,
                 ),
             ),
-            cast_to=OptionsFlowListResponse,
+            cast_to=object,
         )
 
 
@@ -224,18 +243,24 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
         symbol: str,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
+        max_premium: float | NotGiven = NOT_GIVEN,
+        min_premium: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OptionsFlowRetrieveResponse:
+    ) -> object:
         """
         Retrieve options flow data for a specific symbol.
 
         Args:
           date: Date to filter the options flow data.
+
+          max_premium: Maximum premium to filter the options flow data.
+
+          min_premium: Minimum premium to filter the options flow data.
 
           extra_headers: Send extra headers
 
@@ -255,16 +280,23 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"date": date}, options_flow_retrieve_params.OptionsFlowRetrieveParams
+                    {
+                        "date": date,
+                        "max_premium": max_premium,
+                        "min_premium": min_premium,
+                    },
+                    options_flow_retrieve_params.OptionsFlowRetrieveParams,
                 ),
             ),
-            cast_to=OptionsFlowRetrieveResponse,
+            cast_to=object,
         )
 
     async def list(
         self,
         *,
         date: Union[str, date] | NotGiven = NOT_GIVEN,
+        max_premium: float | NotGiven = NOT_GIVEN,
+        min_premium: float | NotGiven = NOT_GIVEN,
         symbol: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -272,12 +304,16 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> OptionsFlowListResponse:
+    ) -> object:
         """
         Retrieve options flow data.
 
         Args:
           date: Date to filter the options flow data.
+
+          max_premium: Maximum premium to filter the options flow data.
+
+          min_premium: Minimum premium to filter the options flow data.
 
           symbol: Stock symbol to filter the options flow data.
 
@@ -299,12 +335,14 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "date": date,
+                        "max_premium": max_premium,
+                        "min_premium": min_premium,
                         "symbol": symbol,
                     },
                     options_flow_list_params.OptionsFlowListParams,
                 ),
             ),
-            cast_to=OptionsFlowListResponse,
+            cast_to=object,
         )
 
 

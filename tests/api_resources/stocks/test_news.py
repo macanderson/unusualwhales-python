@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
-from unusualwhales.types.stocks import NewsListResponse
+from unusualwhales._utils import parse_date
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,14 +20,15 @@ class TestNews:
     @parametrize
     def test_method_list(self, client: Unusualwhales) -> None:
         news = client.stocks.news.list()
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        assert_matches_type(object, news, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unusualwhales) -> None:
         news = client.stocks.news.list(
+            date=parse_date("2019-12-27"),
             symbols="symbols",
         )
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        assert_matches_type(object, news, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unusualwhales) -> None:
@@ -36,7 +37,7 @@ class TestNews:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         news = response.parse()
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        assert_matches_type(object, news, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unusualwhales) -> None:
@@ -45,7 +46,7 @@ class TestNews:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             news = response.parse()
-            assert_matches_type(NewsListResponse, news, path=["response"])
+            assert_matches_type(object, news, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -56,14 +57,15 @@ class TestAsyncNews:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnusualwhales) -> None:
         news = await async_client.stocks.news.list()
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        assert_matches_type(object, news, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnusualwhales) -> None:
         news = await async_client.stocks.news.list(
+            date=parse_date("2019-12-27"),
             symbols="symbols",
         )
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        assert_matches_type(object, news, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnusualwhales) -> None:
@@ -72,7 +74,7 @@ class TestAsyncNews:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         news = await response.parse()
-        assert_matches_type(NewsListResponse, news, path=["response"])
+        assert_matches_type(object, news, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnusualwhales) -> None:
@@ -81,6 +83,6 @@ class TestAsyncNews:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             news = await response.parse()
-            assert_matches_type(NewsListResponse, news, path=["response"])
+            assert_matches_type(object, news, path=["response"])
 
         assert cast(Any, response.is_closed) is True

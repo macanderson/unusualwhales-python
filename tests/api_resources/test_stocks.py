@@ -9,7 +9,6 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
-from unusualwhales.types import StockRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +21,7 @@ class TestStocks:
         stock = client.stocks.retrieve(
             "symbol",
         )
-        assert_matches_type(StockRetrieveResponse, stock, path=["response"])
+        assert_matches_type(object, stock, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unusualwhales) -> None:
@@ -33,7 +32,7 @@ class TestStocks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         stock = response.parse()
-        assert_matches_type(StockRetrieveResponse, stock, path=["response"])
+        assert_matches_type(object, stock, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Unusualwhales) -> None:
@@ -44,7 +43,7 @@ class TestStocks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             stock = response.parse()
-            assert_matches_type(StockRetrieveResponse, stock, path=["response"])
+            assert_matches_type(object, stock, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -64,7 +63,7 @@ class TestAsyncStocks:
         stock = await async_client.stocks.retrieve(
             "symbol",
         )
-        assert_matches_type(StockRetrieveResponse, stock, path=["response"])
+        assert_matches_type(object, stock, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnusualwhales) -> None:
@@ -75,7 +74,7 @@ class TestAsyncStocks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         stock = await response.parse()
-        assert_matches_type(StockRetrieveResponse, stock, path=["response"])
+        assert_matches_type(object, stock, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnusualwhales) -> None:
@@ -86,7 +85,7 @@ class TestAsyncStocks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             stock = await response.parse()
-            assert_matches_type(StockRetrieveResponse, stock, path=["response"])
+            assert_matches_type(object, stock, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
