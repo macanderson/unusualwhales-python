@@ -2,10 +2,22 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import Iterable
+from typing_extensions import Literal, TypedDict
 
-__all__ = ["ScreenerPostParams"]
+__all__ = ["ScreenerPostParams", "Criterion"]
 
 
 class ScreenerPostParams(TypedDict, total=False):
-    body: Required[object]
+    criteria: Iterable[Criterion]
+
+
+class Criterion(TypedDict, total=False):
+    field: str
+    """The field to apply the criterion on."""
+
+    operator: Literal["eq", "neq", "gt", "gte", "lt", "lte", "in", "nin"]
+    """The comparison operator."""
+
+    value: str
+    """The value to compare the field against."""

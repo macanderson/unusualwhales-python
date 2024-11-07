@@ -53,6 +53,12 @@ class Unusualwhales(SyncAPIClient):
     etf: resources.EtfResource
     options_flows: resources.OptionsFlowsResource
     seasonality: resources.SeasonalityResource
+    insider_trades: resources.InsiderTradesResource
+    spike: resources.SpikeResource
+    calendar: resources.CalendarResource
+    correlations: resources.CorrelationsResource
+    analyst: resources.AnalystResource
+    market: resources.MarketResource
     with_raw_response: UnusualwhalesWithRawResponse
     with_streaming_response: UnusualwhalesWithStreamedResponse
 
@@ -117,6 +123,12 @@ class Unusualwhales(SyncAPIClient):
         self.etf = resources.EtfResource(self)
         self.options_flows = resources.OptionsFlowsResource(self)
         self.seasonality = resources.SeasonalityResource(self)
+        self.insider_trades = resources.InsiderTradesResource(self)
+        self.spike = resources.SpikeResource(self)
+        self.calendar = resources.CalendarResource(self)
+        self.correlations = resources.CorrelationsResource(self)
+        self.analyst = resources.AnalystResource(self)
+        self.market = resources.MarketResource(self)
         self.with_raw_response = UnusualwhalesWithRawResponse(self)
         self.with_streaming_response = UnusualwhalesWithStreamedResponse(self)
 
@@ -233,6 +245,12 @@ class AsyncUnusualwhales(AsyncAPIClient):
     etf: resources.AsyncEtfResource
     options_flows: resources.AsyncOptionsFlowsResource
     seasonality: resources.AsyncSeasonalityResource
+    insider_trades: resources.AsyncInsiderTradesResource
+    spike: resources.AsyncSpikeResource
+    calendar: resources.AsyncCalendarResource
+    correlations: resources.AsyncCorrelationsResource
+    analyst: resources.AsyncAnalystResource
+    market: resources.AsyncMarketResource
     with_raw_response: AsyncUnusualwhalesWithRawResponse
     with_streaming_response: AsyncUnusualwhalesWithStreamedResponse
 
@@ -297,6 +315,12 @@ class AsyncUnusualwhales(AsyncAPIClient):
         self.etf = resources.AsyncEtfResource(self)
         self.options_flows = resources.AsyncOptionsFlowsResource(self)
         self.seasonality = resources.AsyncSeasonalityResource(self)
+        self.insider_trades = resources.AsyncInsiderTradesResource(self)
+        self.spike = resources.AsyncSpikeResource(self)
+        self.calendar = resources.AsyncCalendarResource(self)
+        self.correlations = resources.AsyncCorrelationsResource(self)
+        self.analyst = resources.AsyncAnalystResource(self)
+        self.market = resources.AsyncMarketResource(self)
         self.with_raw_response = AsyncUnusualwhalesWithRawResponse(self)
         self.with_streaming_response = AsyncUnusualwhalesWithStreamedResponse(self)
 
@@ -414,6 +438,12 @@ class UnusualwhalesWithRawResponse:
         self.etf = resources.EtfResourceWithRawResponse(client.etf)
         self.options_flows = resources.OptionsFlowsResourceWithRawResponse(client.options_flows)
         self.seasonality = resources.SeasonalityResourceWithRawResponse(client.seasonality)
+        self.insider_trades = resources.InsiderTradesResourceWithRawResponse(client.insider_trades)
+        self.spike = resources.SpikeResourceWithRawResponse(client.spike)
+        self.calendar = resources.CalendarResourceWithRawResponse(client.calendar)
+        self.correlations = resources.CorrelationsResourceWithRawResponse(client.correlations)
+        self.analyst = resources.AnalystResourceWithRawResponse(client.analyst)
+        self.market = resources.MarketResourceWithRawResponse(client.market)
 
 
 class AsyncUnusualwhalesWithRawResponse:
@@ -425,6 +455,12 @@ class AsyncUnusualwhalesWithRawResponse:
         self.etf = resources.AsyncEtfResourceWithRawResponse(client.etf)
         self.options_flows = resources.AsyncOptionsFlowsResourceWithRawResponse(client.options_flows)
         self.seasonality = resources.AsyncSeasonalityResourceWithRawResponse(client.seasonality)
+        self.insider_trades = resources.AsyncInsiderTradesResourceWithRawResponse(client.insider_trades)
+        self.spike = resources.AsyncSpikeResourceWithRawResponse(client.spike)
+        self.calendar = resources.AsyncCalendarResourceWithRawResponse(client.calendar)
+        self.correlations = resources.AsyncCorrelationsResourceWithRawResponse(client.correlations)
+        self.analyst = resources.AsyncAnalystResourceWithRawResponse(client.analyst)
+        self.market = resources.AsyncMarketResourceWithRawResponse(client.market)
 
 
 class UnusualwhalesWithStreamedResponse:
@@ -436,6 +472,12 @@ class UnusualwhalesWithStreamedResponse:
         self.etf = resources.EtfResourceWithStreamingResponse(client.etf)
         self.options_flows = resources.OptionsFlowsResourceWithStreamingResponse(client.options_flows)
         self.seasonality = resources.SeasonalityResourceWithStreamingResponse(client.seasonality)
+        self.insider_trades = resources.InsiderTradesResourceWithStreamingResponse(client.insider_trades)
+        self.spike = resources.SpikeResourceWithStreamingResponse(client.spike)
+        self.calendar = resources.CalendarResourceWithStreamingResponse(client.calendar)
+        self.correlations = resources.CorrelationsResourceWithStreamingResponse(client.correlations)
+        self.analyst = resources.AnalystResourceWithStreamingResponse(client.analyst)
+        self.market = resources.MarketResourceWithStreamingResponse(client.market)
 
 
 class AsyncUnusualwhalesWithStreamedResponse:
@@ -447,6 +489,12 @@ class AsyncUnusualwhalesWithStreamedResponse:
         self.etf = resources.AsyncEtfResourceWithStreamingResponse(client.etf)
         self.options_flows = resources.AsyncOptionsFlowsResourceWithStreamingResponse(client.options_flows)
         self.seasonality = resources.AsyncSeasonalityResourceWithStreamingResponse(client.seasonality)
+        self.insider_trades = resources.AsyncInsiderTradesResourceWithStreamingResponse(client.insider_trades)
+        self.spike = resources.AsyncSpikeResourceWithStreamingResponse(client.spike)
+        self.calendar = resources.AsyncCalendarResourceWithStreamingResponse(client.calendar)
+        self.correlations = resources.AsyncCorrelationsResourceWithStreamingResponse(client.correlations)
+        self.analyst = resources.AsyncAnalystResourceWithStreamingResponse(client.analyst)
+        self.market = resources.AsyncMarketResourceWithStreamingResponse(client.market)
 
 
 Client = Unusualwhales

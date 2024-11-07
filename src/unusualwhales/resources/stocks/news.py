@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -22,6 +19,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.stocks import news_list_params
+from ...types.stocks.news_list_response import NewsListResponse
 
 __all__ = ["NewsResource", "AsyncNewsResource"]
 
@@ -49,7 +47,6 @@ class NewsResource(SyncAPIResource):
     def list(
         self,
         *,
-        date: Union[str, date] | NotGiven = NOT_GIVEN,
         symbols: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -57,13 +54,11 @@ class NewsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> NewsListResponse:
         """
         Retrieve the latest financial news.
 
         Args:
-          date: Date to filter news articles.
-
           symbols: Comma-separated list of stock symbols to filter news.
 
           extra_headers: Send extra headers
@@ -81,15 +76,9 @@ class NewsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "date": date,
-                        "symbols": symbols,
-                    },
-                    news_list_params.NewsListParams,
-                ),
+                query=maybe_transform({"symbols": symbols}, news_list_params.NewsListParams),
             ),
-            cast_to=object,
+            cast_to=NewsListResponse,
         )
 
 
@@ -116,7 +105,6 @@ class AsyncNewsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        date: Union[str, date] | NotGiven = NOT_GIVEN,
         symbols: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -124,13 +112,11 @@ class AsyncNewsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> NewsListResponse:
         """
         Retrieve the latest financial news.
 
         Args:
-          date: Date to filter news articles.
-
           symbols: Comma-separated list of stock symbols to filter news.
 
           extra_headers: Send extra headers
@@ -148,15 +134,9 @@ class AsyncNewsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "date": date,
-                        "symbols": symbols,
-                    },
-                    news_list_params.NewsListParams,
-                ),
+                query=await async_maybe_transform({"symbols": symbols}, news_list_params.NewsListParams),
             ),
-            cast_to=object,
+            cast_to=NewsListResponse,
         )
 
 

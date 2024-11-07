@@ -8,6 +8,22 @@ from .etf import (
     EtfResourceWithStreamingResponse,
     AsyncEtfResourceWithStreamingResponse,
 )
+from .spike import (
+    SpikeResource,
+    AsyncSpikeResource,
+    SpikeResourceWithRawResponse,
+    AsyncSpikeResourceWithRawResponse,
+    SpikeResourceWithStreamingResponse,
+    AsyncSpikeResourceWithStreamingResponse,
+)
+from .market import (
+    MarketResource,
+    AsyncMarketResource,
+    MarketResourceWithRawResponse,
+    AsyncMarketResourceWithRawResponse,
+    MarketResourceWithStreamingResponse,
+    AsyncMarketResourceWithStreamingResponse,
+)
 from .stocks import (
     StocksResource,
     AsyncStocksResource,
@@ -15,6 +31,22 @@ from .stocks import (
     AsyncStocksResourceWithRawResponse,
     StocksResourceWithStreamingResponse,
     AsyncStocksResourceWithStreamingResponse,
+)
+from .analyst import (
+    AnalystResource,
+    AsyncAnalystResource,
+    AnalystResourceWithRawResponse,
+    AsyncAnalystResourceWithRawResponse,
+    AnalystResourceWithStreamingResponse,
+    AsyncAnalystResourceWithStreamingResponse,
+)
+from .calendar import (
+    CalendarResource,
+    AsyncCalendarResource,
+    CalendarResourceWithRawResponse,
+    AsyncCalendarResourceWithRawResponse,
+    CalendarResourceWithStreamingResponse,
+    AsyncCalendarResourceWithStreamingResponse,
 )
 from .congress import (
     CongressResource,
@@ -40,6 +72,14 @@ from .seasonality import (
     SeasonalityResourceWithStreamingResponse,
     AsyncSeasonalityResourceWithStreamingResponse,
 )
+from .correlations import (
+    CorrelationsResource,
+    AsyncCorrelationsResource,
+    CorrelationsResourceWithRawResponse,
+    AsyncCorrelationsResourceWithRawResponse,
+    CorrelationsResourceWithStreamingResponse,
+    AsyncCorrelationsResourceWithStreamingResponse,
+)
 from .institutions import (
     InstitutionsResource,
     AsyncInstitutionsResource,
@@ -55,6 +95,14 @@ from .options_flows import (
     AsyncOptionsFlowsResourceWithRawResponse,
     OptionsFlowsResourceWithStreamingResponse,
     AsyncOptionsFlowsResourceWithStreamingResponse,
+)
+from .insider_trades import (
+    InsiderTradesResource,
+    AsyncInsiderTradesResource,
+    InsiderTradesResourceWithRawResponse,
+    AsyncInsiderTradesResourceWithRawResponse,
+    InsiderTradesResourceWithStreamingResponse,
+    AsyncInsiderTradesResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -100,4 +148,40 @@ __all__ = [
     "AsyncSeasonalityResourceWithRawResponse",
     "SeasonalityResourceWithStreamingResponse",
     "AsyncSeasonalityResourceWithStreamingResponse",
+    "InsiderTradesResource",
+    "AsyncInsiderTradesResource",
+    "InsiderTradesResourceWithRawResponse",
+    "AsyncInsiderTradesResourceWithRawResponse",
+    "InsiderTradesResourceWithStreamingResponse",
+    "AsyncInsiderTradesResourceWithStreamingResponse",
+    "SpikeResource",
+    "AsyncSpikeResource",
+    "SpikeResourceWithRawResponse",
+    "AsyncSpikeResourceWithRawResponse",
+    "SpikeResourceWithStreamingResponse",
+    "AsyncSpikeResourceWithStreamingResponse",
+    "CalendarResource",
+    "AsyncCalendarResource",
+    "CalendarResourceWithRawResponse",
+    "AsyncCalendarResourceWithRawResponse",
+    "CalendarResourceWithStreamingResponse",
+    "AsyncCalendarResourceWithStreamingResponse",
+    "CorrelationsResource",
+    "AsyncCorrelationsResource",
+    "CorrelationsResourceWithRawResponse",
+    "AsyncCorrelationsResourceWithRawResponse",
+    "CorrelationsResourceWithStreamingResponse",
+    "AsyncCorrelationsResourceWithStreamingResponse",
+    "AnalystResource",
+    "AsyncAnalystResource",
+    "AnalystResourceWithRawResponse",
+    "AsyncAnalystResourceWithRawResponse",
+    "AnalystResourceWithStreamingResponse",
+    "AsyncAnalystResourceWithStreamingResponse",
+    "MarketResource",
+    "AsyncMarketResource",
+    "MarketResourceWithRawResponse",
+    "AsyncMarketResourceWithRawResponse",
+    "MarketResourceWithStreamingResponse",
+    "AsyncMarketResourceWithStreamingResponse",
 ]
