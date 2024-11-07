@@ -22,6 +22,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.congress import trade_list_params
+from ...types.congress.trade_list_response import TradeListResponse
 
 __all__ = ["TradesResource", "AsyncTradesResource"]
 
@@ -58,7 +59,7 @@ class TradesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> TradeListResponse:
         """
         Retrieve trading data reported by members of Congress.
 
@@ -93,7 +94,7 @@ class TradesResource(SyncAPIResource):
                     trade_list_params.TradeListParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=TradeListResponse,
         )
 
 
@@ -129,7 +130,7 @@ class AsyncTradesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> TradeListResponse:
         """
         Retrieve trading data reported by members of Congress.
 
@@ -164,7 +165,7 @@ class AsyncTradesResource(AsyncAPIResource):
                     trade_list_params.TradeListParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=TradeListResponse,
         )
 
 

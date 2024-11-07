@@ -8,6 +8,14 @@ from .trades import (
     TradesResourceWithStreamingResponse,
     AsyncTradesResourceWithStreamingResponse,
 )
+from .activity import (
+    ActivityResource,
+    AsyncActivityResource,
+    ActivityResourceWithRawResponse,
+    AsyncActivityResourceWithRawResponse,
+    ActivityResourceWithStreamingResponse,
+    AsyncActivityResourceWithStreamingResponse,
+)
 from .institutions import (
     InstitutionsResource,
     AsyncInstitutionsResource,
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncTradesResourceWithRawResponse",
     "TradesResourceWithStreamingResponse",
     "AsyncTradesResourceWithStreamingResponse",
+    "ActivityResource",
+    "AsyncActivityResource",
+    "ActivityResourceWithRawResponse",
+    "AsyncActivityResourceWithRawResponse",
+    "ActivityResourceWithStreamingResponse",
+    "AsyncActivityResourceWithStreamingResponse",
     "InstitutionsResource",
     "AsyncInstitutionsResource",
     "InstitutionsResourceWithRawResponse",

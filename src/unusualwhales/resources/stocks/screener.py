@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -19,6 +21,8 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.stocks import screener_get_params, screener_post_params
+from ...types.stocks.screener_get_response import ScreenerGetResponse
+from ...types.stocks.screener_post_response import ScreenerPostResponse
 
 __all__ = ["ScreenerResource", "AsyncScreenerResource"]
 
@@ -60,7 +64,7 @@ class ScreenerResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> ScreenerGetResponse:
         """
         Retrieve stocks that meet specified screening criteria.
 
@@ -110,20 +114,20 @@ class ScreenerResource(SyncAPIResource):
                     screener_get_params.ScreenerGetParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=ScreenerGetResponse,
         )
 
     def post(
         self,
         *,
-        body: object,
+        criteria: Iterable[screener_post_params.Criterion] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> ScreenerPostResponse:
         """
         Retrieve stocks that meet specified screening criteria sent in the request body.
 
@@ -138,11 +142,11 @@ class ScreenerResource(SyncAPIResource):
         """
         return self._post(
             "/stocks/screener",
-            body=maybe_transform(body, screener_post_params.ScreenerPostParams),
+            body=maybe_transform({"criteria": criteria}, screener_post_params.ScreenerPostParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=ScreenerPostResponse,
         )
 
 
@@ -183,7 +187,7 @@ class AsyncScreenerResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> ScreenerGetResponse:
         """
         Retrieve stocks that meet specified screening criteria.
 
@@ -233,20 +237,20 @@ class AsyncScreenerResource(AsyncAPIResource):
                     screener_get_params.ScreenerGetParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=ScreenerGetResponse,
         )
 
     async def post(
         self,
         *,
-        body: object,
+        criteria: Iterable[screener_post_params.Criterion] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> ScreenerPostResponse:
         """
         Retrieve stocks that meet specified screening criteria sent in the request body.
 
@@ -261,11 +265,11 @@ class AsyncScreenerResource(AsyncAPIResource):
         """
         return await self._post(
             "/stocks/screener",
-            body=await async_maybe_transform(body, screener_post_params.ScreenerPostParams),
+            body=await async_maybe_transform({"criteria": criteria}, screener_post_params.ScreenerPostParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=ScreenerPostResponse,
         )
 
 
