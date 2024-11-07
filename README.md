@@ -24,10 +24,12 @@ pip install --pre unusualwhales-python
 The full API of this library can be found in [api.md](api.md).
 
 ```python
+import os
 from unusualwhales import Unusualwhales
 
 client = Unusualwhales(
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("API_KEY"),
 )
 
 stock = client.stocks.retrieve(
@@ -36,16 +38,23 @@ stock = client.stocks.retrieve(
 print(stock.price)
 ```
 
+While you can provide an `api_key` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `API_KEY="My API Key"` to your `.env` file
+so that your API Key is not stored in source control.
+
 ## Async usage
 
 Simply import `AsyncUnusualwhales` instead of `Unusualwhales` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from unusualwhales import AsyncUnusualwhales
 
 client = AsyncUnusualwhales(
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("API_KEY"),
 )
 
 
@@ -83,9 +92,7 @@ All errors inherit from `unusualwhales.APIError`.
 import unusualwhales
 from unusualwhales import Unusualwhales
 
-client = Unusualwhales(
-    api_key="My API Key",
-)
+client = Unusualwhales()
 
 try:
     client.stocks.retrieve(
@@ -130,7 +137,6 @@ from unusualwhales import Unusualwhales
 client = Unusualwhales(
     # default is 2
     max_retries=0,
-    api_key="My API Key",
 )
 
 # Or, configure per-request:
@@ -151,13 +157,11 @@ from unusualwhales import Unusualwhales
 client = Unusualwhales(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
-    api_key="My API Key",
 )
 
 # More granular control:
 client = Unusualwhales(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
-    api_key="My API Key",
 )
 
 # Override per-request:
@@ -201,9 +205,7 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 ```py
 from unusualwhales import Unusualwhales
 
-client = Unusualwhales(
-    api_key="My API Key",
-)
+client = Unusualwhales()
 response = client.stocks.with_raw_response.retrieve(
     "REPLACE_ME",
 )
@@ -288,7 +290,6 @@ client = Unusualwhales(
         proxies="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
-    api_key="My API Key",
 )
 ```
 
