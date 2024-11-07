@@ -10,7 +10,6 @@ import pytest
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
 from unusualwhales._utils import parse_date
-from unusualwhales.types.options_flows import HistoricalRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +22,7 @@ class TestHistorical:
         historical = client.options_flows.historical.retrieve(
             symbol="symbol",
         )
-        assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+        assert_matches_type(object, historical, path=["response"])
 
     @parametrize
     def test_method_retrieve_with_all_params(self, client: Unusualwhales) -> None:
@@ -35,7 +34,7 @@ class TestHistorical:
             start_date=parse_date("2019-12-27"),
             strike=0,
         )
-        assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+        assert_matches_type(object, historical, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Unusualwhales) -> None:
@@ -46,7 +45,7 @@ class TestHistorical:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         historical = response.parse()
-        assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+        assert_matches_type(object, historical, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Unusualwhales) -> None:
@@ -57,7 +56,7 @@ class TestHistorical:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             historical = response.parse()
-            assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+            assert_matches_type(object, historical, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -77,7 +76,7 @@ class TestAsyncHistorical:
         historical = await async_client.options_flows.historical.retrieve(
             symbol="symbol",
         )
-        assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+        assert_matches_type(object, historical, path=["response"])
 
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncUnusualwhales) -> None:
@@ -89,7 +88,7 @@ class TestAsyncHistorical:
             start_date=parse_date("2019-12-27"),
             strike=0,
         )
-        assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+        assert_matches_type(object, historical, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncUnusualwhales) -> None:
@@ -100,7 +99,7 @@ class TestAsyncHistorical:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         historical = await response.parse()
-        assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+        assert_matches_type(object, historical, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncUnusualwhales) -> None:
@@ -111,7 +110,7 @@ class TestAsyncHistorical:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             historical = await response.parse()
-            assert_matches_type(HistoricalRetrieveResponse, historical, path=["response"])
+            assert_matches_type(object, historical, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

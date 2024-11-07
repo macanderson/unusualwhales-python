@@ -22,7 +22,6 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.options_flows import chain_retrieve_params
-from ...types.options_flows.chain_retrieve_response import ChainRetrieveResponse
 
 __all__ = ["ChainResource", "AsyncChainResource"]
 
@@ -58,7 +57,7 @@ class ChainResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ChainRetrieveResponse:
+    ) -> object:
         """
         Retrieve the option chain data for a specific stock symbol.
 
@@ -84,7 +83,7 @@ class ChainResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"expiration": expiration}, chain_retrieve_params.ChainRetrieveParams),
             ),
-            cast_to=ChainRetrieveResponse,
+            cast_to=object,
         )
 
 
@@ -119,7 +118,7 @@ class AsyncChainResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ChainRetrieveResponse:
+    ) -> object:
         """
         Retrieve the option chain data for a specific stock symbol.
 
@@ -147,7 +146,7 @@ class AsyncChainResource(AsyncAPIResource):
                     {"expiration": expiration}, chain_retrieve_params.ChainRetrieveParams
                 ),
             ),
-            cast_to=ChainRetrieveResponse,
+            cast_to=object,
         )
 
 

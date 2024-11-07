@@ -35,7 +35,6 @@ client = Unusualwhales(
 stock = client.stocks.retrieve(
     "REPLACE_ME",
 )
-print(stock.price)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -62,7 +61,6 @@ async def main() -> None:
     stock = await client.stocks.retrieve(
         "REPLACE_ME",
     )
-    print(stock.price)
 
 
 asyncio.run(main())
@@ -212,7 +210,7 @@ response = client.stocks.with_raw_response.retrieve(
 print(response.headers.get('X-My-Header'))
 
 stock = response.parse()  # get the object that `stocks.retrieve()` would have returned
-print(stock.price)
+print(stock)
 ```
 
 These methods return an [`APIResponse`](https://github.com/macanderson/unusualwhales-python/tree/main/src/unusualwhales/_response.py) object.

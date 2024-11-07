@@ -22,8 +22,6 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.darkpool import transaction_list_params, transaction_retrieve_params
-from ...types.darkpool.transaction_list_response import TransactionListResponse
-from ...types.darkpool.transaction_retrieve_response import TransactionRetrieveResponse
 
 __all__ = ["TransactionsResource", "AsyncTransactionsResource"]
 
@@ -59,7 +57,7 @@ class TransactionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionRetrieveResponse:
+    ) -> object:
         """
         Retrieve dark pool transactions for a specific symbol.
 
@@ -85,7 +83,7 @@ class TransactionsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"date": date}, transaction_retrieve_params.TransactionRetrieveParams),
             ),
-            cast_to=TransactionRetrieveResponse,
+            cast_to=object,
         )
 
     def list(
@@ -99,7 +97,7 @@ class TransactionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionListResponse:
+    ) -> object:
         """
         Retrieve dark pool transactions data.
 
@@ -131,7 +129,7 @@ class TransactionsResource(SyncAPIResource):
                     transaction_list_params.TransactionListParams,
                 ),
             ),
-            cast_to=TransactionListResponse,
+            cast_to=object,
         )
 
 
@@ -166,7 +164,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionRetrieveResponse:
+    ) -> object:
         """
         Retrieve dark pool transactions for a specific symbol.
 
@@ -194,7 +192,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
                     {"date": date}, transaction_retrieve_params.TransactionRetrieveParams
                 ),
             ),
-            cast_to=TransactionRetrieveResponse,
+            cast_to=object,
         )
 
     async def list(
@@ -208,7 +206,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionListResponse:
+    ) -> object:
         """
         Retrieve dark pool transactions data.
 
@@ -240,7 +238,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
                     transaction_list_params.TransactionListParams,
                 ),
             ),
-            cast_to=TransactionListResponse,
+            cast_to=object,
         )
 
 

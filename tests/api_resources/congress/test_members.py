@@ -9,7 +9,6 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
-from unusualwhales.types.congress import MemberListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +19,7 @@ class TestMembers:
     @parametrize
     def test_method_list(self, client: Unusualwhales) -> None:
         member = client.congress.members.list()
-        assert_matches_type(MemberListResponse, member, path=["response"])
+        assert_matches_type(object, member, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Unusualwhales) -> None:
@@ -29,7 +28,7 @@ class TestMembers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         member = response.parse()
-        assert_matches_type(MemberListResponse, member, path=["response"])
+        assert_matches_type(object, member, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Unusualwhales) -> None:
@@ -38,7 +37,7 @@ class TestMembers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             member = response.parse()
-            assert_matches_type(MemberListResponse, member, path=["response"])
+            assert_matches_type(object, member, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -49,7 +48,7 @@ class TestAsyncMembers:
     @parametrize
     async def test_method_list(self, async_client: AsyncUnusualwhales) -> None:
         member = await async_client.congress.members.list()
-        assert_matches_type(MemberListResponse, member, path=["response"])
+        assert_matches_type(object, member, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnusualwhales) -> None:
@@ -58,7 +57,7 @@ class TestAsyncMembers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         member = await response.parse()
-        assert_matches_type(MemberListResponse, member, path=["response"])
+        assert_matches_type(object, member, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnusualwhales) -> None:
@@ -67,6 +66,6 @@ class TestAsyncMembers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             member = await response.parse()
-            assert_matches_type(MemberListResponse, member, path=["response"])
+            assert_matches_type(object, member, path=["response"])
 
         assert cast(Any, response.is_closed) is True
