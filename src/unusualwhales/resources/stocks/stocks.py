@@ -12,7 +12,31 @@ from .news import (
     NewsResourceWithStreamingResponse,
     AsyncNewsResourceWithStreamingResponse,
 )
+from .quote import (
+    QuoteResource,
+    AsyncQuoteResource,
+    QuoteResourceWithRawResponse,
+    AsyncQuoteResourceWithRawResponse,
+    QuoteResourceWithStreamingResponse,
+    AsyncQuoteResourceWithStreamingResponse,
+)
+from .company import (
+    CompanyResource,
+    AsyncCompanyResource,
+    CompanyResourceWithRawResponse,
+    AsyncCompanyResourceWithRawResponse,
+    CompanyResourceWithStreamingResponse,
+    AsyncCompanyResourceWithStreamingResponse,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .earnings import (
+    EarningsResource,
+    AsyncEarningsResource,
+    EarningsResourceWithRawResponse,
+    AsyncEarningsResourceWithRawResponse,
+    EarningsResourceWithStreamingResponse,
+    AsyncEarningsResourceWithStreamingResponse,
+)
 from .screener import (
     ScreenerResource,
     AsyncScreenerResource,
@@ -22,6 +46,30 @@ from .screener import (
     AsyncScreenerResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
+from .dividends import (
+    DividendsResource,
+    AsyncDividendsResource,
+    DividendsResourceWithRawResponse,
+    AsyncDividendsResourceWithRawResponse,
+    DividendsResourceWithStreamingResponse,
+    AsyncDividendsResourceWithStreamingResponse,
+)
+from .financials import (
+    FinancialsResource,
+    AsyncFinancialsResource,
+    FinancialsResourceWithRawResponse,
+    AsyncFinancialsResourceWithRawResponse,
+    FinancialsResourceWithStreamingResponse,
+    AsyncFinancialsResourceWithStreamingResponse,
+)
+from .historical import (
+    HistoricalResource,
+    AsyncHistoricalResource,
+    HistoricalResourceWithRawResponse,
+    AsyncHistoricalResourceWithRawResponse,
+    HistoricalResourceWithStreamingResponse,
+    AsyncHistoricalResourceWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
     to_raw_response_wrapper,
@@ -43,6 +91,30 @@ class StocksResource(SyncAPIResource):
     @cached_property
     def news(self) -> NewsResource:
         return NewsResource(self._client)
+
+    @cached_property
+    def quote(self) -> QuoteResource:
+        return QuoteResource(self._client)
+
+    @cached_property
+    def historical(self) -> HistoricalResource:
+        return HistoricalResource(self._client)
+
+    @cached_property
+    def company(self) -> CompanyResource:
+        return CompanyResource(self._client)
+
+    @cached_property
+    def financials(self) -> FinancialsResource:
+        return FinancialsResource(self._client)
+
+    @cached_property
+    def earnings(self) -> EarningsResource:
+        return EarningsResource(self._client)
+
+    @cached_property
+    def dividends(self) -> DividendsResource:
+        return DividendsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> StocksResourceWithRawResponse:
@@ -105,6 +177,30 @@ class AsyncStocksResource(AsyncAPIResource):
     @cached_property
     def news(self) -> AsyncNewsResource:
         return AsyncNewsResource(self._client)
+
+    @cached_property
+    def quote(self) -> AsyncQuoteResource:
+        return AsyncQuoteResource(self._client)
+
+    @cached_property
+    def historical(self) -> AsyncHistoricalResource:
+        return AsyncHistoricalResource(self._client)
+
+    @cached_property
+    def company(self) -> AsyncCompanyResource:
+        return AsyncCompanyResource(self._client)
+
+    @cached_property
+    def financials(self) -> AsyncFinancialsResource:
+        return AsyncFinancialsResource(self._client)
+
+    @cached_property
+    def earnings(self) -> AsyncEarningsResource:
+        return AsyncEarningsResource(self._client)
+
+    @cached_property
+    def dividends(self) -> AsyncDividendsResource:
+        return AsyncDividendsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncStocksResourceWithRawResponse:
@@ -175,6 +271,30 @@ class StocksResourceWithRawResponse:
     def news(self) -> NewsResourceWithRawResponse:
         return NewsResourceWithRawResponse(self._stocks.news)
 
+    @cached_property
+    def quote(self) -> QuoteResourceWithRawResponse:
+        return QuoteResourceWithRawResponse(self._stocks.quote)
+
+    @cached_property
+    def historical(self) -> HistoricalResourceWithRawResponse:
+        return HistoricalResourceWithRawResponse(self._stocks.historical)
+
+    @cached_property
+    def company(self) -> CompanyResourceWithRawResponse:
+        return CompanyResourceWithRawResponse(self._stocks.company)
+
+    @cached_property
+    def financials(self) -> FinancialsResourceWithRawResponse:
+        return FinancialsResourceWithRawResponse(self._stocks.financials)
+
+    @cached_property
+    def earnings(self) -> EarningsResourceWithRawResponse:
+        return EarningsResourceWithRawResponse(self._stocks.earnings)
+
+    @cached_property
+    def dividends(self) -> DividendsResourceWithRawResponse:
+        return DividendsResourceWithRawResponse(self._stocks.dividends)
+
 
 class AsyncStocksResourceWithRawResponse:
     def __init__(self, stocks: AsyncStocksResource) -> None:
@@ -191,6 +311,30 @@ class AsyncStocksResourceWithRawResponse:
     @cached_property
     def news(self) -> AsyncNewsResourceWithRawResponse:
         return AsyncNewsResourceWithRawResponse(self._stocks.news)
+
+    @cached_property
+    def quote(self) -> AsyncQuoteResourceWithRawResponse:
+        return AsyncQuoteResourceWithRawResponse(self._stocks.quote)
+
+    @cached_property
+    def historical(self) -> AsyncHistoricalResourceWithRawResponse:
+        return AsyncHistoricalResourceWithRawResponse(self._stocks.historical)
+
+    @cached_property
+    def company(self) -> AsyncCompanyResourceWithRawResponse:
+        return AsyncCompanyResourceWithRawResponse(self._stocks.company)
+
+    @cached_property
+    def financials(self) -> AsyncFinancialsResourceWithRawResponse:
+        return AsyncFinancialsResourceWithRawResponse(self._stocks.financials)
+
+    @cached_property
+    def earnings(self) -> AsyncEarningsResourceWithRawResponse:
+        return AsyncEarningsResourceWithRawResponse(self._stocks.earnings)
+
+    @cached_property
+    def dividends(self) -> AsyncDividendsResourceWithRawResponse:
+        return AsyncDividendsResourceWithRawResponse(self._stocks.dividends)
 
 
 class StocksResourceWithStreamingResponse:
@@ -209,6 +353,30 @@ class StocksResourceWithStreamingResponse:
     def news(self) -> NewsResourceWithStreamingResponse:
         return NewsResourceWithStreamingResponse(self._stocks.news)
 
+    @cached_property
+    def quote(self) -> QuoteResourceWithStreamingResponse:
+        return QuoteResourceWithStreamingResponse(self._stocks.quote)
+
+    @cached_property
+    def historical(self) -> HistoricalResourceWithStreamingResponse:
+        return HistoricalResourceWithStreamingResponse(self._stocks.historical)
+
+    @cached_property
+    def company(self) -> CompanyResourceWithStreamingResponse:
+        return CompanyResourceWithStreamingResponse(self._stocks.company)
+
+    @cached_property
+    def financials(self) -> FinancialsResourceWithStreamingResponse:
+        return FinancialsResourceWithStreamingResponse(self._stocks.financials)
+
+    @cached_property
+    def earnings(self) -> EarningsResourceWithStreamingResponse:
+        return EarningsResourceWithStreamingResponse(self._stocks.earnings)
+
+    @cached_property
+    def dividends(self) -> DividendsResourceWithStreamingResponse:
+        return DividendsResourceWithStreamingResponse(self._stocks.dividends)
+
 
 class AsyncStocksResourceWithStreamingResponse:
     def __init__(self, stocks: AsyncStocksResource) -> None:
@@ -225,3 +393,27 @@ class AsyncStocksResourceWithStreamingResponse:
     @cached_property
     def news(self) -> AsyncNewsResourceWithStreamingResponse:
         return AsyncNewsResourceWithStreamingResponse(self._stocks.news)
+
+    @cached_property
+    def quote(self) -> AsyncQuoteResourceWithStreamingResponse:
+        return AsyncQuoteResourceWithStreamingResponse(self._stocks.quote)
+
+    @cached_property
+    def historical(self) -> AsyncHistoricalResourceWithStreamingResponse:
+        return AsyncHistoricalResourceWithStreamingResponse(self._stocks.historical)
+
+    @cached_property
+    def company(self) -> AsyncCompanyResourceWithStreamingResponse:
+        return AsyncCompanyResourceWithStreamingResponse(self._stocks.company)
+
+    @cached_property
+    def financials(self) -> AsyncFinancialsResourceWithStreamingResponse:
+        return AsyncFinancialsResourceWithStreamingResponse(self._stocks.financials)
+
+    @cached_property
+    def earnings(self) -> AsyncEarningsResourceWithStreamingResponse:
+        return AsyncEarningsResourceWithStreamingResponse(self._stocks.earnings)
+
+    @cached_property
+    def dividends(self) -> AsyncDividendsResourceWithStreamingResponse:
+        return AsyncDividendsResourceWithStreamingResponse(self._stocks.dividends)

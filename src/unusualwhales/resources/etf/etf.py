@@ -4,6 +4,22 @@ from __future__ import annotations
 
 import httpx
 
+from .tide import (
+    TideResource,
+    AsyncTideResource,
+    TideResourceWithRawResponse,
+    AsyncTideResourceWithRawResponse,
+    TideResourceWithStreamingResponse,
+    AsyncTideResourceWithStreamingResponse,
+)
+from .sectors import (
+    SectorsResource,
+    AsyncSectorsResource,
+    SectorsResourceWithRawResponse,
+    AsyncSectorsResourceWithRawResponse,
+    SectorsResourceWithStreamingResponse,
+    AsyncSectorsResourceWithStreamingResponse,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .holdings import (
     HoldingsResource,
@@ -31,6 +47,14 @@ class EtfResource(SyncAPIResource):
     @cached_property
     def holdings(self) -> HoldingsResource:
         return HoldingsResource(self._client)
+
+    @cached_property
+    def tide(self) -> TideResource:
+        return TideResource(self._client)
+
+    @cached_property
+    def sectors(self) -> SectorsResource:
+        return SectorsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> EtfResourceWithRawResponse:
@@ -75,6 +99,14 @@ class AsyncEtfResource(AsyncAPIResource):
     @cached_property
     def holdings(self) -> AsyncHoldingsResource:
         return AsyncHoldingsResource(self._client)
+
+    @cached_property
+    def tide(self) -> AsyncTideResource:
+        return AsyncTideResource(self._client)
+
+    @cached_property
+    def sectors(self) -> AsyncSectorsResource:
+        return AsyncSectorsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncEtfResourceWithRawResponse:
@@ -127,6 +159,14 @@ class EtfResourceWithRawResponse:
     def holdings(self) -> HoldingsResourceWithRawResponse:
         return HoldingsResourceWithRawResponse(self._etf.holdings)
 
+    @cached_property
+    def tide(self) -> TideResourceWithRawResponse:
+        return TideResourceWithRawResponse(self._etf.tide)
+
+    @cached_property
+    def sectors(self) -> SectorsResourceWithRawResponse:
+        return SectorsResourceWithRawResponse(self._etf.sectors)
+
 
 class AsyncEtfResourceWithRawResponse:
     def __init__(self, etf: AsyncEtfResource) -> None:
@@ -139,6 +179,14 @@ class AsyncEtfResourceWithRawResponse:
     @cached_property
     def holdings(self) -> AsyncHoldingsResourceWithRawResponse:
         return AsyncHoldingsResourceWithRawResponse(self._etf.holdings)
+
+    @cached_property
+    def tide(self) -> AsyncTideResourceWithRawResponse:
+        return AsyncTideResourceWithRawResponse(self._etf.tide)
+
+    @cached_property
+    def sectors(self) -> AsyncSectorsResourceWithRawResponse:
+        return AsyncSectorsResourceWithRawResponse(self._etf.sectors)
 
 
 class EtfResourceWithStreamingResponse:
@@ -153,6 +201,14 @@ class EtfResourceWithStreamingResponse:
     def holdings(self) -> HoldingsResourceWithStreamingResponse:
         return HoldingsResourceWithStreamingResponse(self._etf.holdings)
 
+    @cached_property
+    def tide(self) -> TideResourceWithStreamingResponse:
+        return TideResourceWithStreamingResponse(self._etf.tide)
+
+    @cached_property
+    def sectors(self) -> SectorsResourceWithStreamingResponse:
+        return SectorsResourceWithStreamingResponse(self._etf.sectors)
+
 
 class AsyncEtfResourceWithStreamingResponse:
     def __init__(self, etf: AsyncEtfResource) -> None:
@@ -165,3 +221,11 @@ class AsyncEtfResourceWithStreamingResponse:
     @cached_property
     def holdings(self) -> AsyncHoldingsResourceWithStreamingResponse:
         return AsyncHoldingsResourceWithStreamingResponse(self._etf.holdings)
+
+    @cached_property
+    def tide(self) -> AsyncTideResourceWithStreamingResponse:
+        return AsyncTideResourceWithStreamingResponse(self._etf.tide)
+
+    @cached_property
+    def sectors(self) -> AsyncSectorsResourceWithStreamingResponse:
+        return AsyncSectorsResourceWithStreamingResponse(self._etf.sectors)

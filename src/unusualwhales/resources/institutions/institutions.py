@@ -13,6 +13,14 @@ from .trades import (
     AsyncTradesResourceWithStreamingResponse,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .activity import (
+    ActivityResource,
+    AsyncActivityResource,
+    ActivityResourceWithRawResponse,
+    AsyncActivityResourceWithRawResponse,
+    ActivityResourceWithStreamingResponse,
+    AsyncActivityResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -31,6 +39,10 @@ class InstitutionsResource(SyncAPIResource):
     @cached_property
     def trades(self) -> TradesResource:
         return TradesResource(self._client)
+
+    @cached_property
+    def activity(self) -> ActivityResource:
+        return ActivityResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> InstitutionsResourceWithRawResponse:
@@ -75,6 +87,10 @@ class AsyncInstitutionsResource(AsyncAPIResource):
     @cached_property
     def trades(self) -> AsyncTradesResource:
         return AsyncTradesResource(self._client)
+
+    @cached_property
+    def activity(self) -> AsyncActivityResource:
+        return AsyncActivityResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncInstitutionsResourceWithRawResponse:
@@ -127,6 +143,10 @@ class InstitutionsResourceWithRawResponse:
     def trades(self) -> TradesResourceWithRawResponse:
         return TradesResourceWithRawResponse(self._institutions.trades)
 
+    @cached_property
+    def activity(self) -> ActivityResourceWithRawResponse:
+        return ActivityResourceWithRawResponse(self._institutions.activity)
+
 
 class AsyncInstitutionsResourceWithRawResponse:
     def __init__(self, institutions: AsyncInstitutionsResource) -> None:
@@ -139,6 +159,10 @@ class AsyncInstitutionsResourceWithRawResponse:
     @cached_property
     def trades(self) -> AsyncTradesResourceWithRawResponse:
         return AsyncTradesResourceWithRawResponse(self._institutions.trades)
+
+    @cached_property
+    def activity(self) -> AsyncActivityResourceWithRawResponse:
+        return AsyncActivityResourceWithRawResponse(self._institutions.activity)
 
 
 class InstitutionsResourceWithStreamingResponse:
@@ -153,6 +177,10 @@ class InstitutionsResourceWithStreamingResponse:
     def trades(self) -> TradesResourceWithStreamingResponse:
         return TradesResourceWithStreamingResponse(self._institutions.trades)
 
+    @cached_property
+    def activity(self) -> ActivityResourceWithStreamingResponse:
+        return ActivityResourceWithStreamingResponse(self._institutions.activity)
+
 
 class AsyncInstitutionsResourceWithStreamingResponse:
     def __init__(self, institutions: AsyncInstitutionsResource) -> None:
@@ -165,3 +193,7 @@ class AsyncInstitutionsResourceWithStreamingResponse:
     @cached_property
     def trades(self) -> AsyncTradesResourceWithStreamingResponse:
         return AsyncTradesResourceWithStreamingResponse(self._institutions.trades)
+
+    @cached_property
+    def activity(self) -> AsyncActivityResourceWithStreamingResponse:
+        return AsyncActivityResourceWithStreamingResponse(self._institutions.activity)

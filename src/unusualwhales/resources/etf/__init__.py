@@ -8,6 +8,22 @@ from .etf import (
     EtfResourceWithStreamingResponse,
     AsyncEtfResourceWithStreamingResponse,
 )
+from .tide import (
+    TideResource,
+    AsyncTideResource,
+    TideResourceWithRawResponse,
+    AsyncTideResourceWithRawResponse,
+    TideResourceWithStreamingResponse,
+    AsyncTideResourceWithStreamingResponse,
+)
+from .sectors import (
+    SectorsResource,
+    AsyncSectorsResource,
+    SectorsResourceWithRawResponse,
+    AsyncSectorsResourceWithRawResponse,
+    SectorsResourceWithStreamingResponse,
+    AsyncSectorsResourceWithStreamingResponse,
+)
 from .holdings import (
     HoldingsResource,
     AsyncHoldingsResource,
@@ -24,6 +40,18 @@ __all__ = [
     "AsyncHoldingsResourceWithRawResponse",
     "HoldingsResourceWithStreamingResponse",
     "AsyncHoldingsResourceWithStreamingResponse",
+    "TideResource",
+    "AsyncTideResource",
+    "TideResourceWithRawResponse",
+    "AsyncTideResourceWithRawResponse",
+    "TideResourceWithStreamingResponse",
+    "AsyncTideResourceWithStreamingResponse",
+    "SectorsResource",
+    "AsyncSectorsResource",
+    "SectorsResourceWithRawResponse",
+    "AsyncSectorsResourceWithRawResponse",
+    "SectorsResourceWithStreamingResponse",
+    "AsyncSectorsResourceWithStreamingResponse",
     "EtfResource",
     "AsyncEtfResource",
     "EtfResourceWithRawResponse",

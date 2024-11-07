@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-11-07)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/macanderson/unusualwhales-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#20](https://github.com/macanderson/unusualwhales-python/issues/20)) ([c2a16c0](https://github.com/macanderson/unusualwhales-python/commit/c2a16c01810c021aa994106910fe0b19c890536c))
+* **api:** update via SDK Studio ([#21](https://github.com/macanderson/unusualwhales-python/issues/21)) ([72390a0](https://github.com/macanderson/unusualwhales-python/commit/72390a0c45cbce04e5186bb592d489330e69ad75))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#17](https://github.com/macanderson/unusualwhales-python/issues/17)) ([dc2e9b3](https://github.com/macanderson/unusualwhales-python/commit/dc2e9b3515877426778ce0079a425225b80594cf))
+* rebuild project due to codegen change ([#19](https://github.com/macanderson/unusualwhales-python/issues/19)) ([57d5512](https://github.com/macanderson/unusualwhales-python/commit/57d5512ad0e01fe2c072de1ee095d7479496d45f))
+
 ## 0.1.0-alpha.3 (2024-11-04)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/macanderson/unusualwhales-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
