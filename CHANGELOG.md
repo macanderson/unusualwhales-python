@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2024-11-07)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/macanderson/unusualwhales-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** update via SDK Studio ([#23](https://github.com/macanderson/unusualwhales-python/issues/23)) ([511fff5](https://github.com/macanderson/unusualwhales-python/commit/511fff55532a342c65f0380039b8cac562efa730))
+* **api:** update via SDK Studio ([#25](https://github.com/macanderson/unusualwhales-python/issues/25)) ([edb9fba](https://github.com/macanderson/unusualwhales-python/commit/edb9fbaf05359f923396ff41fd2d9e72afbae30f))
+
 ## 0.1.0-alpha.4 (2024-11-07)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/macanderson/unusualwhales-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
