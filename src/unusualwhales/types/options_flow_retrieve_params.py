@@ -14,3 +14,9 @@ __all__ = ["OptionsFlowRetrieveParams"]
 class OptionsFlowRetrieveParams(TypedDict, total=False):
     date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
     """Date to filter the options flow data."""
+
+    max_premium: Annotated[float, PropertyInfo(alias="maxPremium")]
+    """Maximum premium to filter the options flow data."""
+
+    min_premium: Annotated[float, PropertyInfo(alias="minPremium")]
+    """Minimum premium to filter the options flow data."""

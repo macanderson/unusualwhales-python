@@ -9,10 +9,6 @@ import pytest
 
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
-from unusualwhales.types.stocks import (
-    ScreenerGetResponse,
-    ScreenerPostResponse,
-)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +19,7 @@ class TestScreener:
     @parametrize
     def test_method_get(self, client: Unusualwhales) -> None:
         screener = client.stocks.screener.get()
-        assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     def test_method_get_with_all_params(self, client: Unusualwhales) -> None:
@@ -37,7 +33,7 @@ class TestScreener:
             volume_max=0,
             volume_min=0,
         )
-        assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     def test_raw_response_get(self, client: Unusualwhales) -> None:
@@ -46,7 +42,7 @@ class TestScreener:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         screener = response.parse()
-        assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     def test_streaming_response_get(self, client: Unusualwhales) -> None:
@@ -55,55 +51,38 @@ class TestScreener:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             screener = response.parse()
-            assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+            assert_matches_type(object, screener, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_post(self, client: Unusualwhales) -> None:
-        screener = client.stocks.screener.post()
-        assert_matches_type(ScreenerPostResponse, screener, path=["response"])
-
-    @parametrize
-    def test_method_post_with_all_params(self, client: Unusualwhales) -> None:
         screener = client.stocks.screener.post(
-            criteria=[
-                {
-                    "field": "field",
-                    "operator": "eq",
-                    "value": "value",
-                },
-                {
-                    "field": "field",
-                    "operator": "eq",
-                    "value": "value",
-                },
-                {
-                    "field": "field",
-                    "operator": "eq",
-                    "value": "value",
-                },
-            ],
+            body={},
         )
-        assert_matches_type(ScreenerPostResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     def test_raw_response_post(self, client: Unusualwhales) -> None:
-        response = client.stocks.screener.with_raw_response.post()
+        response = client.stocks.screener.with_raw_response.post(
+            body={},
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         screener = response.parse()
-        assert_matches_type(ScreenerPostResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     def test_streaming_response_post(self, client: Unusualwhales) -> None:
-        with client.stocks.screener.with_streaming_response.post() as response:
+        with client.stocks.screener.with_streaming_response.post(
+            body={},
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             screener = response.parse()
-            assert_matches_type(ScreenerPostResponse, screener, path=["response"])
+            assert_matches_type(object, screener, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -114,7 +93,7 @@ class TestAsyncScreener:
     @parametrize
     async def test_method_get(self, async_client: AsyncUnusualwhales) -> None:
         screener = await async_client.stocks.screener.get()
-        assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncUnusualwhales) -> None:
@@ -128,7 +107,7 @@ class TestAsyncScreener:
             volume_max=0,
             volume_min=0,
         )
-        assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncUnusualwhales) -> None:
@@ -137,7 +116,7 @@ class TestAsyncScreener:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         screener = await response.parse()
-        assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncUnusualwhales) -> None:
@@ -146,54 +125,37 @@ class TestAsyncScreener:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             screener = await response.parse()
-            assert_matches_type(ScreenerGetResponse, screener, path=["response"])
+            assert_matches_type(object, screener, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_post(self, async_client: AsyncUnusualwhales) -> None:
-        screener = await async_client.stocks.screener.post()
-        assert_matches_type(ScreenerPostResponse, screener, path=["response"])
-
-    @parametrize
-    async def test_method_post_with_all_params(self, async_client: AsyncUnusualwhales) -> None:
         screener = await async_client.stocks.screener.post(
-            criteria=[
-                {
-                    "field": "field",
-                    "operator": "eq",
-                    "value": "value",
-                },
-                {
-                    "field": "field",
-                    "operator": "eq",
-                    "value": "value",
-                },
-                {
-                    "field": "field",
-                    "operator": "eq",
-                    "value": "value",
-                },
-            ],
+            body={},
         )
-        assert_matches_type(ScreenerPostResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     async def test_raw_response_post(self, async_client: AsyncUnusualwhales) -> None:
-        response = await async_client.stocks.screener.with_raw_response.post()
+        response = await async_client.stocks.screener.with_raw_response.post(
+            body={},
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         screener = await response.parse()
-        assert_matches_type(ScreenerPostResponse, screener, path=["response"])
+        assert_matches_type(object, screener, path=["response"])
 
     @parametrize
     async def test_streaming_response_post(self, async_client: AsyncUnusualwhales) -> None:
-        async with async_client.stocks.screener.with_streaming_response.post() as response:
+        async with async_client.stocks.screener.with_streaming_response.post(
+            body={},
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             screener = await response.parse()
-            assert_matches_type(ScreenerPostResponse, screener, path=["response"])
+            assert_matches_type(object, screener, path=["response"])
 
         assert cast(Any, response.is_closed) is True

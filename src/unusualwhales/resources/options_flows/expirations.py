@@ -14,7 +14,6 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.options_flows.expiration_retrieve_response import ExpirationRetrieveResponse
 
 __all__ = ["ExpirationsResource", "AsyncExpirationsResource"]
 
@@ -49,7 +48,7 @@ class ExpirationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExpirationRetrieveResponse:
+    ) -> object:
         """
         Retrieve available option expiration dates for a specific stock symbol.
 
@@ -69,7 +68,7 @@ class ExpirationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExpirationRetrieveResponse,
+            cast_to=object,
         )
 
 
@@ -103,7 +102,7 @@ class AsyncExpirationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExpirationRetrieveResponse:
+    ) -> object:
         """
         Retrieve available option expiration dates for a specific stock symbol.
 
@@ -123,7 +122,7 @@ class AsyncExpirationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExpirationRetrieveResponse,
+            cast_to=object,
         )
 
 
