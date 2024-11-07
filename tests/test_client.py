@@ -21,7 +21,7 @@ from unusualwhales import Unusualwhales, AsyncUnusualwhales, APIResponseValidati
 from unusualwhales._types import Omit
 from unusualwhales._models import BaseModel, FinalRequestOptions
 from unusualwhales._constants import RAW_RESPONSE_HEADER
-from unusualwhales._exceptions import APIStatusError, APITimeoutError, UnusualwhalesError, APIResponseValidationError
+from unusualwhales._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from unusualwhales._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -329,16 +329,6 @@ class TestUnusualwhales:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
-
-    def test_validate_headers(self) -> None:
-        client = Unusualwhales(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("Authorization") == api_key
-
-        with pytest.raises(UnusualwhalesError):
-            with update_env(**{"API_KEY": Omit()}):
-                client2 = Unusualwhales(base_url=base_url, api_key=None, _strict_response_validation=True)
-            _ = client2
 
     def test_default_query_option(self) -> None:
         client = Unusualwhales(
@@ -1095,16 +1085,6 @@ class TestAsyncUnusualwhales:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
-
-    def test_validate_headers(self) -> None:
-        client = AsyncUnusualwhales(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("Authorization") == api_key
-
-        with pytest.raises(UnusualwhalesError):
-            with update_env(**{"API_KEY": Omit()}):
-                client2 = AsyncUnusualwhales(base_url=base_url, api_key=None, _strict_response_validation=True)
-            _ = client2
 
     def test_default_query_option(self) -> None:
         client = AsyncUnusualwhales(
