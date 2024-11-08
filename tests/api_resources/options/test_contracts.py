@@ -10,7 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from unusualwhales import Unusualwhales, AsyncUnusualwhales
 from unusualwhales._utils import parse_date
-from unusualwhales.types.options_flows import ContractListResponse
+from unusualwhales.types.options import ContractListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,14 +20,14 @@ class TestContracts:
 
     @parametrize
     def test_method_list(self, client: Unusualwhales) -> None:
-        contract = client.options_flows.contracts.list(
+        contract = client.options.contracts.list(
             symbol="symbol",
         )
         assert_matches_type(ContractListResponse, contract, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Unusualwhales) -> None:
-        contract = client.options_flows.contracts.list(
+        contract = client.options.contracts.list(
             symbol="symbol",
             expiration=parse_date("2019-12-27"),
             option_type="CALL",
@@ -37,7 +37,7 @@ class TestContracts:
 
     @parametrize
     def test_raw_response_list(self, client: Unusualwhales) -> None:
-        response = client.options_flows.contracts.with_raw_response.list(
+        response = client.options.contracts.with_raw_response.list(
             symbol="symbol",
         )
 
@@ -48,7 +48,7 @@ class TestContracts:
 
     @parametrize
     def test_streaming_response_list(self, client: Unusualwhales) -> None:
-        with client.options_flows.contracts.with_streaming_response.list(
+        with client.options.contracts.with_streaming_response.list(
             symbol="symbol",
         ) as response:
             assert not response.is_closed
@@ -65,14 +65,14 @@ class TestAsyncContracts:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncUnusualwhales) -> None:
-        contract = await async_client.options_flows.contracts.list(
+        contract = await async_client.options.contracts.list(
             symbol="symbol",
         )
         assert_matches_type(ContractListResponse, contract, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncUnusualwhales) -> None:
-        contract = await async_client.options_flows.contracts.list(
+        contract = await async_client.options.contracts.list(
             symbol="symbol",
             expiration=parse_date("2019-12-27"),
             option_type="CALL",
@@ -82,7 +82,7 @@ class TestAsyncContracts:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncUnusualwhales) -> None:
-        response = await async_client.options_flows.contracts.with_raw_response.list(
+        response = await async_client.options.contracts.with_raw_response.list(
             symbol="symbol",
         )
 
@@ -93,7 +93,7 @@ class TestAsyncContracts:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncUnusualwhales) -> None:
-        async with async_client.options_flows.contracts.with_streaming_response.list(
+        async with async_client.options.contracts.with_streaming_response.list(
             symbol="symbol",
         ) as response:
             assert not response.is_closed

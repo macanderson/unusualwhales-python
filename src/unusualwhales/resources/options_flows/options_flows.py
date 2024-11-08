@@ -38,14 +38,6 @@ from .contract import (
     AsyncContractResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
-from .contracts import (
-    ContractsResource,
-    AsyncContractsResource,
-    ContractsResourceWithRawResponse,
-    AsyncContractsResourceWithRawResponse,
-    ContractsResourceWithStreamingResponse,
-    AsyncContractsResourceWithStreamingResponse,
-)
 from .oi_change import (
     OiChangeResource,
     AsyncOiChangeResource,
@@ -144,10 +136,6 @@ class OptionsFlowsResource(SyncAPIResource):
     @cached_property
     def contract(self) -> ContractResource:
         return ContractResource(self._client)
-
-    @cached_property
-    def contracts(self) -> ContractsResource:
-        return ContractsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> OptionsFlowsResourceWithRawResponse:
@@ -291,10 +279,6 @@ class AsyncOptionsFlowsResource(AsyncAPIResource):
     @cached_property
     def contract(self) -> AsyncContractResource:
         return AsyncContractResource(self._client)
-
-    @cached_property
-    def contracts(self) -> AsyncContractsResource:
-        return AsyncContractsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncOptionsFlowsResourceWithRawResponse:
@@ -451,10 +435,6 @@ class OptionsFlowsResourceWithRawResponse:
     def contract(self) -> ContractResourceWithRawResponse:
         return ContractResourceWithRawResponse(self._options_flows.contract)
 
-    @cached_property
-    def contracts(self) -> ContractsResourceWithRawResponse:
-        return ContractsResourceWithRawResponse(self._options_flows.contracts)
-
 
 class AsyncOptionsFlowsResourceWithRawResponse:
     def __init__(self, options_flows: AsyncOptionsFlowsResource) -> None:
@@ -502,10 +482,6 @@ class AsyncOptionsFlowsResourceWithRawResponse:
     @cached_property
     def contract(self) -> AsyncContractResourceWithRawResponse:
         return AsyncContractResourceWithRawResponse(self._options_flows.contract)
-
-    @cached_property
-    def contracts(self) -> AsyncContractsResourceWithRawResponse:
-        return AsyncContractsResourceWithRawResponse(self._options_flows.contracts)
 
 
 class OptionsFlowsResourceWithStreamingResponse:
@@ -555,10 +531,6 @@ class OptionsFlowsResourceWithStreamingResponse:
     def contract(self) -> ContractResourceWithStreamingResponse:
         return ContractResourceWithStreamingResponse(self._options_flows.contract)
 
-    @cached_property
-    def contracts(self) -> ContractsResourceWithStreamingResponse:
-        return ContractsResourceWithStreamingResponse(self._options_flows.contracts)
-
 
 class AsyncOptionsFlowsResourceWithStreamingResponse:
     def __init__(self, options_flows: AsyncOptionsFlowsResource) -> None:
@@ -606,7 +578,3 @@ class AsyncOptionsFlowsResourceWithStreamingResponse:
     @cached_property
     def contract(self) -> AsyncContractResourceWithStreamingResponse:
         return AsyncContractResourceWithStreamingResponse(self._options_flows.contract)
-
-    @cached_property
-    def contracts(self) -> AsyncContractsResourceWithStreamingResponse:
-        return AsyncContractsResourceWithStreamingResponse(self._options_flows.contracts)
