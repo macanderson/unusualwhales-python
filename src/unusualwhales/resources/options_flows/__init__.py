@@ -24,14 +24,6 @@ from .contract import (
     ContractResourceWithStreamingResponse,
     AsyncContractResourceWithStreamingResponse,
 )
-from .contracts import (
-    ContractsResource,
-    AsyncContractsResource,
-    ContractsResourceWithRawResponse,
-    AsyncContractsResourceWithRawResponse,
-    ContractsResourceWithStreamingResponse,
-    AsyncContractsResourceWithStreamingResponse,
-)
 from .oi_change import (
     OiChangeResource,
     AsyncOiChangeResource,
@@ -144,12 +136,6 @@ __all__ = [
     "AsyncContractResourceWithRawResponse",
     "ContractResourceWithStreamingResponse",
     "AsyncContractResourceWithStreamingResponse",
-    "ContractsResource",
-    "AsyncContractsResource",
-    "ContractsResourceWithRawResponse",
-    "AsyncContractsResourceWithRawResponse",
-    "ContractsResourceWithStreamingResponse",
-    "AsyncContractsResourceWithStreamingResponse",
     "OptionsFlowsResource",
     "AsyncOptionsFlowsResource",
     "OptionsFlowsResourceWithRawResponse",

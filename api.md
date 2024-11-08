@@ -354,18 +354,6 @@ Methods:
 
 - <code title="get /options/contract/{optionSymbol}">client.options_flows.contract.<a href="./src/unusualwhales/resources/options_flows/contract.py">retrieve</a>(option_symbol) -> <a href="./src/unusualwhales/types/options_flows/contract_retrieve_response.py">ContractRetrieveResponse</a></code>
 
-## Contracts
-
-Types:
-
-```python
-from unusualwhales.types.options_flows import ContractListResponse
-```
-
-Methods:
-
-- <code title="get /options/contracts">client.options_flows.contracts.<a href="./src/unusualwhales/resources/options_flows/contracts.py">list</a>(\*\*<a href="src/unusualwhales/types/options_flows/contract_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/options_flows/contract_list_response.py">ContractListResponse</a></code>
-
 # Seasonality
 
 ## Stocks
@@ -531,3 +519,17 @@ from unusualwhales.types.market import NewsListResponse
 Methods:
 
 - <code title="get /market/news">client.market.news.<a href="./src/unusualwhales/resources/market/news.py">list</a>(\*\*<a href="src/unusualwhales/types/market/news_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/market/news_list_response.py">NewsListResponse</a></code>
+
+# Options
+
+## Contracts
+
+Types:
+
+```python
+from unusualwhales.types.options import ContractListResponse
+```
+
+Methods:
+
+- <code title="get /options/contracts">client.options.contracts.<a href="./src/unusualwhales/resources/options/contracts.py">list</a>(\*\*<a href="src/unusualwhales/types/options/contract_list_params.py">params</a>) -> <a href="./src/unusualwhales/types/options/contract_list_response.py">ContractListResponse</a></code>
