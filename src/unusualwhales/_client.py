@@ -59,6 +59,7 @@ class Unusualwhales(SyncAPIClient):
     correlations: resources.CorrelationsResource
     analyst: resources.AnalystResource
     market: resources.MarketResource
+    options: resources.OptionsResource
     with_raw_response: UnusualwhalesWithRawResponse
     with_streaming_response: UnusualwhalesWithStreamedResponse
 
@@ -129,6 +130,7 @@ class Unusualwhales(SyncAPIClient):
         self.correlations = resources.CorrelationsResource(self)
         self.analyst = resources.AnalystResource(self)
         self.market = resources.MarketResource(self)
+        self.options = resources.OptionsResource(self)
         self.with_raw_response = UnusualwhalesWithRawResponse(self)
         self.with_streaming_response = UnusualwhalesWithStreamedResponse(self)
 
@@ -251,6 +253,7 @@ class AsyncUnusualwhales(AsyncAPIClient):
     correlations: resources.AsyncCorrelationsResource
     analyst: resources.AsyncAnalystResource
     market: resources.AsyncMarketResource
+    options: resources.AsyncOptionsResource
     with_raw_response: AsyncUnusualwhalesWithRawResponse
     with_streaming_response: AsyncUnusualwhalesWithStreamedResponse
 
@@ -321,6 +324,7 @@ class AsyncUnusualwhales(AsyncAPIClient):
         self.correlations = resources.AsyncCorrelationsResource(self)
         self.analyst = resources.AsyncAnalystResource(self)
         self.market = resources.AsyncMarketResource(self)
+        self.options = resources.AsyncOptionsResource(self)
         self.with_raw_response = AsyncUnusualwhalesWithRawResponse(self)
         self.with_streaming_response = AsyncUnusualwhalesWithStreamedResponse(self)
 
@@ -444,6 +448,7 @@ class UnusualwhalesWithRawResponse:
         self.correlations = resources.CorrelationsResourceWithRawResponse(client.correlations)
         self.analyst = resources.AnalystResourceWithRawResponse(client.analyst)
         self.market = resources.MarketResourceWithRawResponse(client.market)
+        self.options = resources.OptionsResourceWithRawResponse(client.options)
 
 
 class AsyncUnusualwhalesWithRawResponse:
@@ -461,6 +466,7 @@ class AsyncUnusualwhalesWithRawResponse:
         self.correlations = resources.AsyncCorrelationsResourceWithRawResponse(client.correlations)
         self.analyst = resources.AsyncAnalystResourceWithRawResponse(client.analyst)
         self.market = resources.AsyncMarketResourceWithRawResponse(client.market)
+        self.options = resources.AsyncOptionsResourceWithRawResponse(client.options)
 
 
 class UnusualwhalesWithStreamedResponse:
@@ -478,6 +484,7 @@ class UnusualwhalesWithStreamedResponse:
         self.correlations = resources.CorrelationsResourceWithStreamingResponse(client.correlations)
         self.analyst = resources.AnalystResourceWithStreamingResponse(client.analyst)
         self.market = resources.MarketResourceWithStreamingResponse(client.market)
+        self.options = resources.OptionsResourceWithStreamingResponse(client.options)
 
 
 class AsyncUnusualwhalesWithStreamedResponse:
@@ -495,6 +502,7 @@ class AsyncUnusualwhalesWithStreamedResponse:
         self.correlations = resources.AsyncCorrelationsResourceWithStreamingResponse(client.correlations)
         self.analyst = resources.AsyncAnalystResourceWithStreamingResponse(client.analyst)
         self.market = resources.AsyncMarketResourceWithStreamingResponse(client.market)
+        self.options = resources.AsyncOptionsResourceWithStreamingResponse(client.options)
 
 
 Client = Unusualwhales

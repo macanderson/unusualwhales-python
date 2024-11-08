@@ -40,6 +40,14 @@ from .analyst import (
     AnalystResourceWithStreamingResponse,
     AsyncAnalystResourceWithStreamingResponse,
 )
+from .options import (
+    OptionsResource,
+    AsyncOptionsResource,
+    OptionsResourceWithRawResponse,
+    AsyncOptionsResourceWithRawResponse,
+    OptionsResourceWithStreamingResponse,
+    AsyncOptionsResourceWithStreamingResponse,
+)
 from .calendar import (
     CalendarResource,
     AsyncCalendarResource,
@@ -184,4 +192,10 @@ __all__ = [
     "AsyncMarketResourceWithRawResponse",
     "MarketResourceWithStreamingResponse",
     "AsyncMarketResourceWithStreamingResponse",
+    "OptionsResource",
+    "AsyncOptionsResource",
+    "OptionsResourceWithRawResponse",
+    "AsyncOptionsResourceWithRawResponse",
+    "OptionsResourceWithStreamingResponse",
+    "AsyncOptionsResourceWithStreamingResponse",
 ]

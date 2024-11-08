@@ -22,8 +22,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.options_flows import contract_list_params
-from ...types.options_flows.contract_list_response import ContractListResponse
+from ...types.options import contract_list_params
+from ...types.options.contract_list_response import ContractListResponse
 
 __all__ = ["ContractsResource", "AsyncContractsResource"]
 
